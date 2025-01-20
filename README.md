@@ -16,7 +16,7 @@ This repository is designed to:
 
 ### 1️⃣ **Clone the Repo**  
 ```bash  
-git clone https://github.com/yourusername/TraxionPayV3-Merchant-Tests.git
+git clone https://github.com/yourusername/TraxionPay-V3.git
 ```
 ### 2️⃣ **Install Dependencies** 
 ```bash  
