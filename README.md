@@ -8,7 +8,7 @@ Welcome to the **TraxionPay V3 - Merchant** Playwright testing repository! 🚀 
 This repository is designed to:  
 - ✅ Automate testing for **TraxionPay V3 - Merchant Portal**.  
 - ✅ Improve regression testing efficiency.  
-- ✅ Ensure a reliable and user-friendly payment platform.  
+- ✅ Ensure a reliable and user-friendly platform.  
 
 ---
 
