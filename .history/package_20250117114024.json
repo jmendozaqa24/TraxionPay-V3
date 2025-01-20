@@ -1,0 +1,26 @@
+{
+  "name": "tpayv3_automation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test:api": "playwright test --config=api.config.ts --project=Chromium",
+    "clean:allure": "rd /s /q allure-results",
+    "test:allure": "npx playwright test --reporter=line,allure-playwright",
+    "allure:report": "allure generate --clean && allure open"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.49.0",
+    "@types/node": "^22.10.1",
+    "allure-commandline": "^2.32.0",
+    "allure-playwright": "^3.0.9"
+  },
+  "dependencies": {
+    "crypto-js": "^4.2.0",
+    "lodash": "^4.17.21",
+    "moment": "^2.30.1"
+  }
+}

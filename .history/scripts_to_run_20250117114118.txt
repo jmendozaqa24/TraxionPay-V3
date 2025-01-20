@@ -1,0 +1,6 @@
+Clean the allure-results folder:
+
+npm run clean:allure
+
+Generate and open the Allure report:
+npm run allure:report

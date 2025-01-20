@@ -1,0 +1,14 @@
+ALLURE COMMANDS:
+    Clean the allure-results folder:
+            npm run clean:allure
+
+    Generate and open the Allure report:
+            npm run allure:report
+
+
+MOBILE COMMANDS:
+    Open Device:
+        scrcpy
+
+    Check Device Connected:
+        adb devices

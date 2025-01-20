@@ -1,0 +1,42 @@
+import {PlaywrightTestConfig} from '@playwright/test';
+
+const config: PlaywrightTestConfig = {
+    timeout: 6000,
+    retries: 0,
+    testDir: './Main',
+    use:{
+        headless: true,
+        viewport:{width: 1920, height: 1080},
+        actionTimeout: 10000,
+        ignoreHTTPSErrors: true,
+        video: 'off',
+        screenshot: 'off',
+    },
+    
+    projects: [
+        {
+            name: 'chromium',
+            use: { 
+                browserName: 'chromium',
+                launchOptions:{
+                    slowMo:100,
+                },
+            },
+        },
+        {
+            name: 'firefox',
+            use: { 
+                browserName: 'firefox',
+                launchOptions:{
+                    slowMo:100,
+                },
+            },
+        },
+        
+    ],
+    
+}
+
+
+
+export default config;

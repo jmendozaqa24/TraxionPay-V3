@@ -1,0 +1,21 @@
+{
+  "correctUsers": [
+    {
+      "email": "vasalanga+1@traxiontech.net",
+      "password": "Traxion123!"
+    },
+    {
+      "email": "vasalanga+2@traxiontech.net",
+      "password": "Traxion123!"
+    }
+  ],
+  
+  "incorrectUsers": [
+    {
+      "email": "incorrect1@example.com"
+    },
+    {
+      "email": "incorrect2@example.com"
+    }
+  ]
+}

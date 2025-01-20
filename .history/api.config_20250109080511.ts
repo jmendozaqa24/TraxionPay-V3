@@ -1,0 +1,1 @@
+import {PlayWrightTestconfig} from '@playwright/test';

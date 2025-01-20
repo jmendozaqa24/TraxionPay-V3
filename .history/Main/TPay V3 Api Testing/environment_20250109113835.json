@@ -1,0 +1,7 @@
+{
+    "bearer_token": "",
+    "refresh_token": "",
+    "generated_totp_code": "",
+    "secret_key": "HCFQQARAAHRGMYDK", 
+    "e2e": true
+  }
