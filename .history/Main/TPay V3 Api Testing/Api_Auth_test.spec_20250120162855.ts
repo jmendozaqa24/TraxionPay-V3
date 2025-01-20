@@ -51,7 +51,7 @@ test.describe.parallel('API Testing - Login', () => {
     }
   });
 
-  test('Logout', async ({ request }) => {
+  test.afterAll('Logout', async ({ request }) => {
     allure.description('This test logs out a user and clears the tokens from environment variables.');
 
     const bearerToken = getEnvVariable('bearer_token');

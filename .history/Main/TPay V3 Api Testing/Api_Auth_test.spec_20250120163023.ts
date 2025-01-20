@@ -50,8 +50,9 @@ test.describe.parallel('API Testing - Login', () => {
       setEnvVariable('generated_totp_code', otp); // Save the OTP used for login
     }
   });
+  
 
-  test('Logout', async ({ request }) => {
+  test.afterAll(async ({ request }) => {
     allure.description('This test logs out a user and clears the tokens from environment variables.');
 
     const bearerToken = getEnvVariable('bearer_token');

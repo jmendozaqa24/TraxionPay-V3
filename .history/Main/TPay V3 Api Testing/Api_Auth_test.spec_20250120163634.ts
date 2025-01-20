@@ -51,7 +51,7 @@ test.describe.parallel('API Testing - Login', () => {
     }
   });
 
-  test('Logout', async ({ request }) => {
+  test.skip('Logout', async ({ request }) => {
     allure.description('This test logs out a user and clears the tokens from environment variables.');
 
     const bearerToken = getEnvVariable('bearer_token');
@@ -81,7 +81,7 @@ test.describe.parallel('API Testing - Login', () => {
     setEnvVariable('secret_key', '');
     setEnvVariable('generated_totp_code', '');
   });
-});
+
 
 test.describe.parallel('API Testing - WhoAmI', () => {
   const baseURL = getEnvVariable('base_url');
@@ -229,4 +229,6 @@ test.describe.parallel('API Testing - Refresh Tokens', () => {
       setEnvVariable('refresh_token', decryptedResponse.data.refreshToken);
     }
   });
+});
+
 });

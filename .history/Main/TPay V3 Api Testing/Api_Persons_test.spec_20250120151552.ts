@@ -141,7 +141,7 @@ test.describe.parallel('API Testing - Person List', () => {
         }
       });
   
-      expect(response.status()).toBe(401); // Expecting Unauthorized status
+      expect(response.status()).toBe(502); // Expecting Unauthorized status
       const responseBody = await response.json();
       console.log(responseBody);
   

@@ -154,4 +154,5 @@ test.describe.parallel('API Testing - Person List', () => {
       const error = responseBody.error;
       console.log(error);
     });
+  });
 });
