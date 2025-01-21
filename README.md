@@ -22,7 +22,7 @@ git clone https://github.com/yourusername/TraxionPay-V3.git
 ```bash  
 npm install
 ```
-### 3️⃣ **Install Dependencies** 
+### 3️⃣ **Run Your First Test** 
 Execute your tests with:
 
 ```bash  
