@@ -109,14 +109,12 @@ test.describe('TPay V3 - User Profile', () => {
     });
   });
 
+  test.describe('TPay V3 - Settings Tab', () => {
     test('Bank Accounts Tab', async () => {
       await page.getByLabel('Open user menu').click();
       await page.getByRole('link', { name: 'Settings' }).click();
       await page.getByRole('link', { name: 'Bank Accounts' }).click();
       await page.getByRole('heading', { name: 'Linked Bank Accounts' }).click();
-
-      const mobilenNumLabel = await page.getByText('Your mobile number can be used to login to your account.');
-      const mobileNumber = await mobilenNumLabel.evaluate(node => node.nextElementSibling.querySelector('div:nth-child(9) > div > .col-auto').innerText.trim());
-      console.log(`Mobile Number: ${mobileNumber}`);
-    });   
+    }); 
+  });   
 });

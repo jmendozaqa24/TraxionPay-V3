@@ -34,7 +34,9 @@ test.beforeEach(async () => {
   await page.goto('https://merchant-sit.traxionpay.com');
 });
 
-
+test.afterAll(async () => {
+  await context.close();
+});
 
 test.describe('Dashboard - User Details', () => {
   test('User Details Visibility and Retrieval', async () => {

@@ -52,15 +52,8 @@ test.describe('TPay V3 - User Profile', () => {
 
       await page.getByRole('heading', { name: 'Account Details' }).click();
       await page.locator('.col-auto > .avatar').click();
-
-          const emailLabel = await page.getByText('Your email can be used to log in to your account.');
-    const userEmail = await emailLabel.evaluate(node => node.nextElementSibling.querySelector('div:nth-child(6) > div > .col-auto').innerText.trim());
-    console.log(`Email: ${userEmail}`);
-
-    const mobilenNumLabel = await page.getByText('Your mobile number can be used to login to your account.');
-    const mobileNumber = await mobilenNumLabel.evaluate(node => node.nextElementSibling.querySelector('div:nth-child(9) > div > .col-auto').innerText.trim());
-    console.log(`Mobile Number: ${mobileNumber}`);
-  });
+  
+    });
 
     test('Merchant Details Tab', async () => {
       await page.getByLabel('Open user menu').click();
@@ -108,15 +101,4 @@ test.describe('TPay V3 - User Profile', () => {
       console.log(`Notes/Remarks: ${notesRemarks}`);
     });
   });
-
-    test('Bank Accounts Tab', async () => {
-      await page.getByLabel('Open user menu').click();
-      await page.getByRole('link', { name: 'Settings' }).click();
-      await page.getByRole('link', { name: 'Bank Accounts' }).click();
-      await page.getByRole('heading', { name: 'Linked Bank Accounts' }).click();
-
-      const mobilenNumLabel = await page.getByText('Your mobile number can be used to login to your account.');
-      const mobileNumber = await mobilenNumLabel.evaluate(node => node.nextElementSibling.querySelector('div:nth-child(9) > div > .col-auto').innerText.trim());
-      console.log(`Mobile Number: ${mobileNumber}`);
-    });   
 });
