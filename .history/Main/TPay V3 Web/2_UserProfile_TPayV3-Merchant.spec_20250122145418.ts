@@ -142,6 +142,5 @@ test.describe('TPay V3 - User Profile', () => {
       "Account Name": accountName,
       "Account Number": accountNumber,
       "Account Type": accountType
-    };
-  });   
+    };  
 });

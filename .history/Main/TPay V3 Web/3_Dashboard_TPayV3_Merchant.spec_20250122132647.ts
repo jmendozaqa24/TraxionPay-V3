@@ -34,6 +34,8 @@ test.beforeEach(async () => {
   await page.goto('https://merchant-sit.traxionpay.com');
 });
 
+
+
 test.describe('Dashboard - User Details', () => {
   test('User Details Visibility and Retrieval', async () => {
     // Check visibility of the account link and retrieve its value
@@ -86,7 +88,7 @@ test.describe('Dashboard - User Details', () => {
     console.log(`Phone Number: Visible\nPhone: ${phoneNumberText.trim()}`);
   });
 });
-
+m,
 test.describe('Dashboard - Analytics', () => {
   test('Overview Analytics Visibility and Retrieval', async () => {
     // Wait for the total PayIns value element to be visible and ensure it has content
@@ -215,8 +217,8 @@ test.describe('Dashboard - Transaction Table Test', () => {
 
     test('Transaction Status', async () => {
       // Check the "Failed Pending Success" dropdown
-      const statusDropdown = await page.getByLabel('Success Pending Failed');
-      const statusOptions = ['1', '0', '-1'];
+      const statusDropdown = await page.getByLabel('Failed Pending Success');
+      const statusOptions = ['-1', '0', '1'];
       for (const option of statusOptions) {
         await statusDropdown.click(); // Open the dropdown
         await statusDropdown.selectOption(option);

@@ -120,28 +120,37 @@ test.describe('TPay V3 - User Profile', () => {
     await page.getByRole('link', { name: 'Bank Accounts' }).click();
     await page.getByRole('heading', { name: 'Linked Bank Accounts' }).click();
 
-    const bankNameLabel = await page.getByText('Bank Name:');
-    const bankName = await bankNameLabel.evaluate(node => node.nextSibling.textContent.trim());
-    console.log(`Bank Name: ${bankName}`);
+    const bankAccounts = await page.locator('.bank-account-entry'); // Adjust the selector to match your bank account entry elements
+    const bankDetailsArray: { "Bank Name": string; "Account Name": string; "Account Number": string; "Account Type": string }[] = [];
 
-    const accountNameLabel = await page.getByText('Account Name:');
-    const accountName = await accountNameLabel.evaluate(node => node.nextSibling.textContent.trim());
-    console.log(`Account Name: ${accountName}`);
+    for (let i = 0; i < await bankAccounts.count(); i++) {
+      const bankAccount = bankAccounts.nth(i);
 
-    const accountNumberLabel = await page.getByText('Account Number:');
-    const accountNumber = await accountNumberLabel.evaluate(node => node.nextSibling.textContent.trim());
-    console.log(`Account Number: ${accountNumber}`);
+      const bankName = await bankAccount.locator('text=Bank Name:').evaluate(node => node.nextSibling.textContent.trim());
+      console.log(`Bank Name: ${bankName}`);
 
-    const accountTypeLabel = await page.getByText('Account Type:');
-    const accountType = await accountTypeLabel.evaluate(node => node.nextSibling.textContent.trim());
-    console.log(`Account Type: ${accountType}`);
+      const accountName = await bankAccount.locator('text=Account Name:').evaluate(node => node.nextSibling.textContent.trim());
+      console.log(`Account Name: ${accountName}`);
+
+      const accountNumber = await bankAccount.locator('text=Account Number:').evaluate(node => node.nextSibling.textContent.trim());
+      console.log(`Account Number: ${accountNumber}`);
+
+      const accountType = await bankAccount.locator('text=Account Type:').evaluate(node => node.nextSibling.textContent.trim());
+      console.log(`Account Type: ${accountType}`);
+
+      bankDetailsArray.push({
+        "Bank Name": bankName,
+        "Account Name": accountName,
+        "Account Number": accountNumber,
+        "Account Type": accountType
+      });
+    }
 
     // Save the details to the JSON file
-    const bankDetails = {
-      "Bank Name": bankName,
-      "Account Name": accountName,
-      "Account Number": accountNumber,
-      "Account Type": accountType
+    const data = {
+      bankDetails: bankDetailsArray
     };
-  });   
+
+    fs.writeFileSync('main/TPay V3 Web/testData.json', JSON.stringify(data, null, 2));
+  });  
 });

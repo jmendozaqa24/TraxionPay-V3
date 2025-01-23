@@ -29,11 +29,6 @@ test.beforeAll(async ({ browser }) => {
   await expect(page.getByRole('heading', { name: 'Dashboard' })).toBeVisible();
 });
 
-test.beforeEach(async () => {
-  // Reset the state of the page before each test
-  await page.goto('https://merchant-sit.traxionpay.com');
-});
-
 test.describe('Dashboard - User Details', () => {
   test('User Details Visibility and Retrieval', async () => {
     // Check visibility of the account link and retrieve its value

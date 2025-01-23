@@ -12,7 +12,7 @@ function getRandomCorrectUser() {
 let context;
 let page;
 
-test.beforeAll(async ({ browser }) => {
+test.beforeEach(async ({ browser }) => {
   context = await browser.newContext();
   page = await context.newPage();
   const testDataUsers = getRandomCorrectUser();
@@ -27,11 +27,6 @@ test.beforeAll(async ({ browser }) => {
   await expect(page).toHaveURL('https://merchant-sit.traxionpay.com');
   await expect(page.getByText('Overview')).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Dashboard' })).toBeVisible();
-});
-
-test.beforeEach(async () => {
-  // Reset the state of the page before each test
-  await page.goto('https://merchant-sit.traxionpay.com');
 });
 
 test.describe('Dashboard - User Details', () => {

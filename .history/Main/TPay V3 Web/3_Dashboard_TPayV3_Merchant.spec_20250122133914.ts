@@ -29,11 +29,6 @@ test.beforeAll(async ({ browser }) => {
   await expect(page.getByRole('heading', { name: 'Dashboard' })).toBeVisible();
 });
 
-test.beforeEach(async () => {
-  // Reset the state of the page before each test
-  await page.goto('https://merchant-sit.traxionpay.com');
-});
-
 test.describe('Dashboard - User Details', () => {
   test('User Details Visibility and Retrieval', async () => {
     // Check visibility of the account link and retrieve its value
@@ -216,7 +211,8 @@ test.describe('Dashboard - Transaction Table Test', () => {
     test('Transaction Status', async () => {
       // Check the "Failed Pending Success" dropdown
       const statusDropdown = await page.getByLabel('Success Pending Failed');
-      const statusOptions = ['1', '0', '-1'];
+
+      const statusOptions = ['-1', '0', '1'];
       for (const option of statusOptions) {
         await statusDropdown.click(); // Open the dropdown
         await statusDropdown.selectOption(option);

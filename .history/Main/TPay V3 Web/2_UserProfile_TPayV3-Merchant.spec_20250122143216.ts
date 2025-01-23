@@ -114,34 +114,16 @@ test.describe('TPay V3 - User Profile', () => {
     });
   });
 
-  test('Bank Accounts Tab', async () => {
-    await page.getByLabel('Open user menu').click();
-    await page.getByRole('link', { name: 'Settings' }).click();
-    await page.getByRole('link', { name: 'Bank Accounts' }).click();
-    await page.getByRole('heading', { name: 'Linked Bank Accounts' }).click();
+    test('Bank Accounts Tab', async () => {
+      await page.getByLabel('Open user menu').click();
+      await page.getByRole('link', { name: 'Settings' }).click();
+      await page.getByRole('link', { name: 'Bank Accounts' }).click();
+      await page.getByRole('heading', { name: 'Linked Bank Accounts' }).click();
+      
+      await page.getByText('Bank Name: ').click();
+      await page.getByText('Account Name: ').first().click();
+      await page.getByText('Account Number: ').click();
+      await page.getByText('Account Type: ').click();
 
-    const bankNameLabel = await page.getByText('Bank Name:');
-    const bankName = await bankNameLabel.evaluate(node => node.nextSibling.textContent.trim());
-    console.log(`Bank Name: ${bankName}`);
-
-    const accountNameLabel = await page.getByText('Account Name:');
-    const accountName = await accountNameLabel.evaluate(node => node.nextSibling.textContent.trim());
-    console.log(`Account Name: ${accountName}`);
-
-    const accountNumberLabel = await page.getByText('Account Number:');
-    const accountNumber = await accountNumberLabel.evaluate(node => node.nextSibling.textContent.trim());
-    console.log(`Account Number: ${accountNumber}`);
-
-    const accountTypeLabel = await page.getByText('Account Type:');
-    const accountType = await accountTypeLabel.evaluate(node => node.nextSibling.textContent.trim());
-    console.log(`Account Type: ${accountType}`);
-
-    // Save the details to the JSON file
-    const bankDetails = {
-      "Bank Name": bankName,
-      "Account Name": accountName,
-      "Account Number": accountNumber,
-      "Account Type": accountType
-    };
-  });   
+    });   
 });

@@ -143,5 +143,12 @@ test.describe('TPay V3 - User Profile', () => {
       "Account Number": accountNumber,
       "Account Type": accountType
     };
+
+    const data = {
+      bankDetails: [bankDetails]
+    };
+
+    fs.writeFileSync('main/TPay V3 Web/testData.json', JSON.stringify(data, null, 2));
   });   
 });
+

@@ -121,19 +121,19 @@ test.describe('TPay V3 - User Profile', () => {
     await page.getByRole('heading', { name: 'Linked Bank Accounts' }).click();
 
     const bankNameLabel = await page.getByText('Bank Name:');
-    const bankName = await bankNameLabel.evaluate(node => node.nextSibling.textContent.trim());
+    const bankName = await bankNameLabel.evaluate(node => node.parentElement.querySelector('Bank Name:').innerText.trim());
     console.log(`Bank Name: ${bankName}`);
 
     const accountNameLabel = await page.getByText('Account Name:');
-    const accountName = await accountNameLabel.evaluate(node => node.nextSibling.textContent.trim());
+    const accountName = await accountNameLabel.evaluate(node => node.parentElement.querySelector('div').innerText.trim());
     console.log(`Account Name: ${accountName}`);
 
     const accountNumberLabel = await page.getByText('Account Number:');
-    const accountNumber = await accountNumberLabel.evaluate(node => node.nextSibling.textContent.trim());
+    const accountNumber = await accountNumberLabel.evaluate(node => node.parentElement.querySelector('div').innerText.trim());
     console.log(`Account Number: ${accountNumber}`);
 
     const accountTypeLabel = await page.getByText('Account Type:');
-    const accountType = await accountTypeLabel.evaluate(node => node.nextSibling.textContent.trim());
+    const accountType = await accountTypeLabel.evaluate(node => node.parentElement.querySelector('div').innerText.trim());
     console.log(`Account Type: ${accountType}`);
 
     // Save the details to the JSON file
@@ -143,5 +143,17 @@ test.describe('TPay V3 - User Profile', () => {
       "Account Number": accountNumber,
       "Account Type": accountType
     };
+
+    const data = {
+      bankDetails: [bankDetails]
+    };
+
+    fs.writeFileSync('main/TPay V3 Web/testData.json', JSON.stringify(data, null, 2));
   });   
 });
+
+
+await page.getByText('Bank Name: ASIA UNITED BANK').click();
+await page.getByText('Account Name: Vincent Salanga').first().click();
+await page.getByText('Account Number: 916100010416').click();
+await page.getByText('Account Type: Savings').click();
