@@ -38,7 +38,7 @@ jobs:
         password: vZsG2RUaLrC79EDX
         subject: Playwright Test Results
         to: vasalanga@traxiontech.net
-        from: 841d57001@smtp-brevo.com
+        from: ${{ secrets.BREVO_USERNAME }}
         body: |
           The Playwright tests have completed. Please find the attached report.
         attachments: playwright-report/index.html

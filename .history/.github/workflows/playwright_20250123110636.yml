@@ -34,11 +34,11 @@ jobs:
       with:
         server_address: smtp-relay.brevo.com
         server_port: 587
-        username: 841d57001@smtp-brevo.com
-        password: vZsG2RUaLrC79EDX
+        username: ${{ secrets.BREVO_USERNAME }}
+        password: ${{ secrets.BREVO_PASSWORD }}
         subject: Playwright Test Results
-        to: vasalanga@traxiontech.net
-        from: 841d57001@smtp-brevo.com
+        to: your-email@example.com
+        from: ${{ secrets.BREVO_USERNAME }}
         body: |
           The Playwright tests have completed. Please find the attached report.
         attachments: playwright-report/index.html
