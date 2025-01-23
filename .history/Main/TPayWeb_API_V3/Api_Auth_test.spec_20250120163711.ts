@@ -51,8 +51,6 @@ test.describe.parallel('API Testing - Login', () => {
     }
   });
 
-  /*
-
   test('Logout', async ({ request }) => {
     allure.description('This test logs out a user and clears the tokens from environment variables.');
 
@@ -83,7 +81,6 @@ test.describe.parallel('API Testing - Login', () => {
     setEnvVariable('secret_key', '');
     setEnvVariable('generated_totp_code', '');
   });
-  */
 });
 
 test.describe.parallel('API Testing - WhoAmI', () => {
