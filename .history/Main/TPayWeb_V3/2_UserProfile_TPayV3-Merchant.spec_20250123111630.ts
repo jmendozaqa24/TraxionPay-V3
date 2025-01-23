@@ -1,9 +1,7 @@
 import { test, expect } from '@playwright/test';
 import * as fs from 'fs';
 
-//const userDetails = JSON.parse(fs.readFileSync('main/TPayWeb_V3/userDetails.json', 'utf-8'));
 const userDetails = JSON.parse(fs.readFileSync('main/TPayWeb_V3/userDetails.json', 'utf-8'));
-
 
 function getRandomCorrectUser() {
   const testUserProfile = userDetails.testUserProfile;
