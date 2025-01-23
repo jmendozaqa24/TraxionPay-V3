@@ -4,8 +4,8 @@ on:
     branches: [ main, master ]
   pull_request:
     branches: [ main, master ]
-  #schedule:
-    #- cron: '0 */1 * * *' # Runs every 4 hours
+  schedule:
+    - cron: '0 */4 * * *' # Runs every 4 hours
 
 jobs:
   test:
@@ -34,11 +34,11 @@ jobs:
       with:
         server_address: smtp-relay.brevo.com
         server_port: 587
-        username: 841d57001@smtp-brevo.com
-        password: vZsG2RUaLrC79EDX
+        username: ${{ secrets.BREVO_USERNAME }}
+        password: ${{ secrets.BREVO_PASSWORD }}
         subject: Playwright Test Results
         to: vasalanga@traxiontech.net
-        from: 841d57001@smtp-brevo.com
+        from: ${{ secrets.BREVO_USERNAME }}
         body: |
           The Playwright tests have completed. Please find the attached report.
         attachments: playwright-report/index.html
