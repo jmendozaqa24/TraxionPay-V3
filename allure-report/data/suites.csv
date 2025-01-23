@@ -1,2 +1,5 @@
 "DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
-"This test logs in a user and stores the tokens in environment variables.","794","Login","chromium","Mon Jan 20 08:48:56 PST 2025","passed","Mon Jan 20 08:48:57 PST 2025","API Testing - Login","TPay V3 Api Testing\Api_Auth_test.spec.ts","",""
+"","2190","Bank Accounts Tab","chromium","Thu Jan 23 09:19:39 PST 2025","passed","Thu Jan 23 09:19:41 PST 2025","TPay V3 - User Profile","TPay V3 Web\2_UserProfile_TPayV3-Merchant.spec.ts","",""
+"","2069","My Account Tab","chromium","Thu Jan 23 09:19:35 PST 2025","passed","Thu Jan 23 09:19:37 PST 2025","TPay V3 - User Profile > TPay V3 - Settings Tab","TPay V3 Web\2_UserProfile_TPayV3-Merchant.spec.ts","",""
+"","2586","Profile Tab","chromium","Thu Jan 23 09:19:30 PST 2025","passed","Thu Jan 23 09:19:33 PST 2025","TPay V3 - User Profile","TPay V3 Web\2_UserProfile_TPayV3-Merchant.spec.ts","",""
+"","2008","Merchant Details Tab","chromium","Thu Jan 23 09:19:37 PST 2025","passed","Thu Jan 23 09:19:39 PST 2025","TPay V3 - User Profile > TPay V3 - Settings Tab","TPay V3 Web\2_UserProfile_TPayV3-Merchant.spec.ts","",""
