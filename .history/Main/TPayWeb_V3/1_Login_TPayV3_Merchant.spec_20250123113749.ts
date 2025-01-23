@@ -1,6 +1,8 @@
 import { test, expect } from '@playwright/test';
+//import userDetails from '../userDetails.json';
 import userDetails from './userDetails.json'; 
 
+//const userDetails = JSON.parse(fs.readFileSync('../userDetails.json', 'utf-8'));
 
 function getRandomCorrectUser() {
   const correctUsers = userDetails.correctUsers;
