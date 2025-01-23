@@ -124,7 +124,7 @@ test.describe('TPay V3 - User Profile', () => {
     const accountContainers = await page.locator('.col-lg-6').elementHandles();
 
     // Iterate over each bank account container, with a maximum of 5 accounts
-    for (let i = 0; i < accountContainers.length && i < 10; i++) {
+    for (let i = 0; i < accountContainers.length && i < 5; i++) {
         const container = accountContainers[i];
 
         const bankNameElement = await container.$('.mb-2:has-text("Bank Name:")');

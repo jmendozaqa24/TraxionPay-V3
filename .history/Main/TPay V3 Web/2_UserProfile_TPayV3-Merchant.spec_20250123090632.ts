@@ -124,7 +124,7 @@ test.describe('TPay V3 - User Profile', () => {
     const accountContainers = await page.locator('.col-lg-6').elementHandles();
 
     // Iterate over each bank account container, with a maximum of 5 accounts
-    for (let i = 0; i < accountContainers.length && i < 10; i++) {
+    for (let i = 0; i < accountContainers.length && i < 5; i++) {
         const container = accountContainers[i];
 
         const bankNameElement = await container.$('.mb-2:has-text("Bank Name:")');
@@ -155,7 +155,7 @@ test.describe('TPay V3 - User Profile', () => {
             console.log(`Account Number: ${accountNumber}`);
             console.log(`Account Type: ${accountType}`);
         } else {
-            console.log(`Open Bank Account Slot ${i + 1}.`);
+            console.log(`Bank Account ${i + 1} is missing some details.`);
         }
     }
   });

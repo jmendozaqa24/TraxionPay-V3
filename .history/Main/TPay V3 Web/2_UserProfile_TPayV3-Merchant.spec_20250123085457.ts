@@ -123,42 +123,33 @@ test.describe('TPay V3 - User Profile', () => {
     // Locate all "col-lg-6" containers (each container represents a bank account)
     const accountContainers = await page.locator('.col-lg-6').elementHandles();
 
-    // Iterate over each bank account container, with a maximum of 5 accounts
-    for (let i = 0; i < accountContainers.length && i < 10; i++) {
+    // Iterate over each bank account container
+    for (let i = 0; i < accountContainers.length; i++) {
         const container = accountContainers[i];
 
-        const bankNameElement = await container.$('.mb-2:has-text("Bank Name:")');
-        const accountNameElement = await container.$('.mb-2:has-text("Account Name:")');
-        const accountNumberElement = await container.$('.mb-2:has-text("Account Number:")');
-        const accountTypeElement = await container.$('.mb-2:has-text("Account Type:")');
+        const bankName = await container.$eval('.mb-2:has-text("Bank Name:")', node =>
+            (node as HTMLElement).innerText.replace('Bank Name:', '').trim()
+        );
 
-        if (bankNameElement && accountNameElement && accountNumberElement && accountTypeElement) {
-            const bankName = await bankNameElement.evaluate(node =>
-                (node as HTMLElement).innerText.replace('Bank Name:', '').trim()
-            );
+        const accountName = await container.$eval('.mb-2:has-text("Account Name:")', node =>
+            (node as HTMLElement).innerText.replace('Account Name:', '').trim()
+        );
 
-            const accountName = await accountNameElement.evaluate(node =>
-                (node as HTMLElement).innerText.replace('Account Name:', '').trim()
-            );
+        const accountNumber = await container.$eval('.mb-2:has-text("Account Number:")', node =>
+            (node as HTMLElement).innerText.replace('Account Number:', '').trim()
+        );
 
-            const accountNumber = await accountNumberElement.evaluate(node =>
-                (node as HTMLElement).innerText.replace('Account Number:', '').trim()
-            );
+        const accountType = await container.$eval('.mb-2:has-text("Account Type:")', node =>
+            (node as HTMLElement).innerText.replace('Account Type:', '').trim()
+        );
 
-            const accountType = await accountTypeElement.evaluate(node =>
-                (node as HTMLElement).innerText.replace('Account Type:', '').trim()
-            );
-
-            console.log(`Bank Account ${i + 1}`);
-            console.log(`Bank Name: ${bankName}`);
-            console.log(`Account Name: ${accountName}`);
-            console.log(`Account Number: ${accountNumber}`);
-            console.log(`Account Type: ${accountType}`);
-        } else {
-            console.log(`Open Bank Account Slot ${i + 1}.`);
-        }
+        console.log(`Bank Account ${i + 1}`);
+        console.log(`Bank Name: ${bankName}`);
+        console.log(`Account Name: ${accountName}`);
+        console.log(`Account Number: ${accountNumber}`);
+        console.log(`Account Type: ${accountType}`);
     }
-  });
+  });    
 });
 
 /*

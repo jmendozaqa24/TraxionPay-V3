@@ -120,45 +120,26 @@ test.describe('TPay V3 - User Profile', () => {
     await page.getByRole('link', { name: 'Bank Accounts' }).click();
     await page.getByRole('heading', { name: 'Linked Bank Accounts' }).click();
 
-    // Locate all "col-lg-6" containers (each container represents a bank account)
-    const accountContainers = await page.locator('.col-lg-6').elementHandles();
+    // Count the number of accounts based on unique elements like "Account Name:"
+    const accountCount = await page.getByText('Account Name: ').count();
 
-    // Iterate over each bank account container, with a maximum of 5 accounts
-    for (let i = 0; i < accountContainers.length && i < 10; i++) {
-        const container = accountContainers[i];
+    for (let i = 0; i < accountCount; i++) {
+        // Use nth(i) to handle each account
+        const accountName = await page.getByText('Account Name: ').nth(i).textContent();
+        const accountType = await page.getByText('Account Type: ').nth(i).textContent();
 
-        const bankNameElement = await container.$('.mb-2:has-text("Bank Name:")');
-        const accountNameElement = await container.$('.mb-2:has-text("Account Name:")');
-        const accountNumberElement = await container.$('.mb-2:has-text("Account Number:")');
-        const accountTypeElement = await container.$('.mb-2:has-text("Account Type:")');
+        // Bank Name and Account Number need to be located relative to other fields
+        const accountContainer = await page.getByText('text=Account Name:').nth(i).locator('..');
+        const bankName = await accountContainer.locator('text=Bank Name:').nextSibling().textContent();
+        const accountNumber = await accountContainer.locator('text=Account Number:').nextSibling().textContent();
 
-        if (bankNameElement && accountNameElement && accountNumberElement && accountTypeElement) {
-            const bankName = await bankNameElement.evaluate(node =>
-                (node as HTMLElement).innerText.replace('Bank Name:', '').trim()
-            );
-
-            const accountName = await accountNameElement.evaluate(node =>
-                (node as HTMLElement).innerText.replace('Account Name:', '').trim()
-            );
-
-            const accountNumber = await accountNumberElement.evaluate(node =>
-                (node as HTMLElement).innerText.replace('Account Number:', '').trim()
-            );
-
-            const accountType = await accountTypeElement.evaluate(node =>
-                (node as HTMLElement).innerText.replace('Account Type:', '').trim()
-            );
-
-            console.log(`Bank Account ${i + 1}`);
-            console.log(`Bank Name: ${bankName}`);
-            console.log(`Account Name: ${accountName}`);
-            console.log(`Account Number: ${accountNumber}`);
-            console.log(`Account Type: ${accountType}`);
-        } else {
-            console.log(`Open Bank Account Slot ${i + 1}.`);
-        }
+        console.log(`Bank Account ${i + 1}`);
+        console.log(`Bank Name: ${bankName.trim()}`);
+        console.log(`Account Name: ${accountName.trim()}`);
+        console.log(`Account Number: ${accountNumber.trim()}`);
+        console.log(`Account Type: ${accountType.trim()}`);
     }
-  });
+  });    
 });
 
 /*

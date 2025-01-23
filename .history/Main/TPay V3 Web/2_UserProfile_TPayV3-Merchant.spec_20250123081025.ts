@@ -120,52 +120,20 @@ test.describe('TPay V3 - User Profile', () => {
     await page.getByRole('link', { name: 'Bank Accounts' }).click();
     await page.getByRole('heading', { name: 'Linked Bank Accounts' }).click();
 
-    // Locate all "col-lg-6" containers (each container represents a bank account)
-    const accountContainers = await page.locator('.col-lg-6').elementHandles();
+    const bankNameLabel = await page.getByText('Bank Name:');
+    const bankName = await bankNameLabel.evaluate(node => node.nextSibling.textContent.trim());
+    console.log(`Bank Name: ${bankName}`);
 
-    // Iterate over each bank account container, with a maximum of 5 accounts
-    for (let i = 0; i < accountContainers.length && i < 10; i++) {
-        const container = accountContainers[i];
+    const accountNameLabel = await page.getByText('Account Name:');
+    const accountName = await accountNameLabel.evaluate(node => node.nextSibling.textContent.trim());
+    console.log(`Account Name: ${accountName}`);
 
-        const bankNameElement = await container.$('.mb-2:has-text("Bank Name:")');
-        const accountNameElement = await container.$('.mb-2:has-text("Account Name:")');
-        const accountNumberElement = await container.$('.mb-2:has-text("Account Number:")');
-        const accountTypeElement = await container.$('.mb-2:has-text("Account Type:")');
+    const accountNumberLabel = await page.getByText('Account Number:');
+    const accountNumber = await accountNumberLabel.evaluate(node => node.nextSibling.textContent.trim());
+    console.log(`Account Number: ${accountNumber}`);
 
-        if (bankNameElement && accountNameElement && accountNumberElement && accountTypeElement) {
-            const bankName = await bankNameElement.evaluate(node =>
-                (node as HTMLElement).innerText.replace('Bank Name:', '').trim()
-            );
-
-            const accountName = await accountNameElement.evaluate(node =>
-                (node as HTMLElement).innerText.replace('Account Name:', '').trim()
-            );
-
-            const accountNumber = await accountNumberElement.evaluate(node =>
-                (node as HTMLElement).innerText.replace('Account Number:', '').trim()
-            );
-
-            const accountType = await accountTypeElement.evaluate(node =>
-                (node as HTMLElement).innerText.replace('Account Type:', '').trim()
-            );
-
-            console.log(`Bank Account ${i + 1}`);
-            console.log(`Bank Name: ${bankName}`);
-            console.log(`Account Name: ${accountName}`);
-            console.log(`Account Number: ${accountNumber}`);
-            console.log(`Account Type: ${accountType}`);
-        } else {
-            console.log(`Open Bank Account Slot ${i + 1}.`);
-        }
-    }
-  });
+    const accountTypeLabel = await page.getByText('Account Type:');
+    const accountType = await accountTypeLabel.evaluate(node => node.nextSibling.textContent.trim());
+    console.log(`Account Type: ${accountType}`);
+  });   
 });
-
-/*
-getByText('Account Name: Vincent Salanga').first()
-getByText('Account Name: Vincent Salanga').nth(1)
-getByText('Account Name: Vincent Salanga').nth(2)
-
-
-getByText('Account Type: Checking').first()
-getByText('Account Type: Checking').nth(1)*/
