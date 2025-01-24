@@ -1,0 +1,185 @@
+name: Playwright Tests
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  #schedule:
+    #- cron: '0 */1 * * *' # Runs every 4 hours
+
+jobs:
+#  run-all-tests:
+#    timeout-minutes: 60
+#    runs-on: self-hosted
+#    steps:
+#    - uses: actions/checkout@v4
+#    - uses: actions/setup-node@v4
+#      with:
+#        node-version: lts/*
+#    - name: Install dependencies
+#      run: npm ci
+#    - name: Install Playwright Browsers
+#      run: npx playwright install --with-deps
+#    - name: Run Playwright tests
+#      run: #npx playwright test
+#    - uses: actions/upload-artifact@v4
+#      if: ${{ !cancelled() }}
+#      with:
+#        name: playwright-report
+#        path: playwright-report/
+#        retention-days: 30
+#    - name: Send email with test results
+#      if: always()
+#      uses: dawidd6/action-send-mail@v3
+#      with:
+#        server_address: smtp-relay.brevo.com
+#        server_port: 587
+#       username: TraxionAutomationReport@smtp-brevo.com
+#        password: xsmtpsib-4f0bcc1e2f16cc3d67b475d6546b50fee87dd6173961afb5b4defdd54d78898b-VDqZOFh6QWz95ICP
+#       subject: Playwright Test Results
+#        to: vasalanga@traxiontech.net
+#        from: TraxionAutomationReport@smtp-brevo.com
+#        body: |
+#          The Playwright tests have completed. Please find the attached report.
+#        attachments: playwright-report/index.html
+
+  run-tpayweb-v3-tests:
+    timeout-minutes: 60
+    runs-on: self-hosted
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+      with:
+        node-version: lts/*
+    - name: Install dependencies
+      run: npm ci
+    - name: Install Playwright Browsers
+      run: npx playwright install --with-deps
+    - name: Run TPayWeb_V3 Playwright Tests
+      run: npx playwright test Main/TPayWeb_V3/1_Login_TPayV3_Merchant.spec.ts
+    - name: Generate Allure Report
+      run: |
+        npx allure generate allure-results --clean -o allure-report
+    - name: Serve Allure Report
+      run: |
+        npx allure open allure-report --port 8080 &
+        echo "Allure report is being served at http://localhost:8080"
+    - uses: actions/upload-artifact@v4
+      if: ${{ !cancelled() }}
+      with:
+        name: allure-report
+        path: allure-report/
+        retention-days: 30
+    - name: Send email with test results for TPayWeb_V3
+      if: always()
+      uses: dawidd6/action-send-mail@v3
+      with:
+        server_address: smtp.gmail.com
+        server_port: 587
+        username: vasalanga@traxiontech.net
+        subject: Playwright Test Result
+        password: yszeszihrsqreloy
+        to: salangavincent@gmail.com
+        from: vasalanga@traxiontech.net
+        body: |
+          <html>
+            <head>
+              <style>
+                body {
+                  font-family: Arial, sans-serif;
+                  margin: 0;
+                  padding: 0;
+                  background-color: #f9f9f9;
+                  color: #333;
+                }
+                .container {
+                  max-width: 600px;
+                  margin: 20px auto;
+                  background-color: #ffffff;
+                  border: 1px solid #dddddd;
+                  border-radius: 8px;
+                  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                  overflow: hidden;
+                }
+                .header {
+                  background-color: #007bff;
+                  color: #ffffff;
+                  text-align: center;
+                  padding: 20px;
+                }
+                .header h1 {
+                  margin: 0;
+                  font-size: 24px;
+                }
+                .content {
+                  padding: 20px;
+                }
+                .content h2 {
+                  font-size: 20px;
+                  margin-bottom: 10px;
+                }
+                .content p {
+                  font-size: 16px;
+                  margin-bottom: 15px;
+                }
+                .table {
+                  width: 100%;
+                  border-collapse: collapse;
+                  margin-bottom: 20px;
+                }
+                .table th, .table td {
+                  border: 1px solid #dddddd;
+                  padding: 10px;
+                  text-align: left;
+                }
+                .table th {
+                  background-color: #f4f4f4;
+                }
+                .footer {
+                  background-color: #f4f4f4;
+                  text-align: center;
+                  padding: 10px;
+                  font-size: 12px;
+                  color: #666;
+                }
+                .footer a {
+                  color: #007bff;
+                  text-decoration: none;
+                }
+              </style>
+            </head>
+            <body>
+              <div class="container">
+                <div class="header">
+                  <h1>Automation Test Report</h1>
+                </div>
+                <div class="content">
+                  <h2>Summary</h2>
+                  <p><strong>Date:</strong> {{DATE}}</p>
+                  <p><strong>Repository:</strong> {{REPO_NAME}}</p>
+                  <p><strong>Branch:</strong> {{BRANCH_NAME}}</p>
+
+                  <h2>Test Results</h2>
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>Test Case</th>
+                        <th>Status</th>
+                        <th>Duration</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {{TEST_RESULTS}}
+                    </tbody>
+                  </table>
+                  <h2>Details</h2>
+                  <p>For detailed logs and results, please visit the <a href="{{CI_LINK}}">GitHub Actions page</a>.</p>
+                </div>
+                <div class="footer">
+                  <p>Generated automatically by GitHub CI | <a href="https://www.brevo.com">Brevo</a></p>
+                </div>
+              </div>
+            </body>
+          </html>
+
+        
