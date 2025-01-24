@@ -56,7 +56,7 @@ jobs:
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
     - name: Run TPayWeb_V3 Playwright Tests
-      run: npx playwright test Main/TPayWeb_V3/1_Login_TPayV3_Merchant.spec.ts
+      run: npx playwright test TPayWeb_V3
     - name: Generate Allure Report
       run: |
             npx allure generate allure-results --clean -o allure-report
@@ -84,5 +84,3 @@ jobs:
         body: |
           The Playwright tests for TPayWeb_V3 have completed. Please find the attached report.
         attachments: allure-report/index.html
-
-        
