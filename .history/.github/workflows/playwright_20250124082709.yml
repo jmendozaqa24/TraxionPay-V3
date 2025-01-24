@@ -21,7 +21,7 @@ jobs:
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
     - name: Run Playwright tests
-      run: 
+      run: npx playwright test
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
@@ -34,11 +34,11 @@ jobs:
       with:
         server_address: smtp-relay.brevo.com
         server_port: 587
-        username: TraxionAutomationReport@smtp-brevo.com
-        password: xsmtpsib-4f0bcc1e2f16cc3d67b475d6546b50fee87dd6173961afb5b4defdd54d78898b-VDqZOFh6QWz95ICP
+        username: 841d57002@smtp-brevo.com
+        password: T2CfG1kwQ4SNaUYE
         subject: Playwright Test Results
         to: vasalanga@traxiontech.net
-        from: TraxionAutomationReport@smtp-brevo.com
+        from: 841d57001@smtp-brevo.com
         body: |
           The Playwright tests have completed. Please find the attached report.
         attachments: playwright-report/index.html
