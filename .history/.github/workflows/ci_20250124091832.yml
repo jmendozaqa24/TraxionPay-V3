@@ -31,11 +31,11 @@ jobs:
       with:
         server_address: smtp.gmail.com
         server_port: 587
-        username: vasalanga@traxiontech.net
-        password: Vincent213@
+        username: ${{ secrets.GMAIL_USERNAME }}
+        password: ${{ secrets.GMAIL_PASSWORD }}
         subject: Playwright Test Results for TPayWeb_V3
-        to: salangavincent@gmail.com
-        from: vasalanga@traxiontech.net
+        to: vasalanga@traxiontech.net
+        from: ${{ secrets.GMAIL_USERNAME }}
         body: |
           The Playwright tests for TPayWeb_V3 have completed. Please find the attached report.
         attachments: playwright-report/index.html

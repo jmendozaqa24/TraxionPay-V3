@@ -29,13 +29,13 @@ jobs:
       if: always()
       uses: dawidd6/action-send-mail@v3
       with:
-        server_address: smtp.gmail.com
+        server_address: smtp-relay.brevo.com
         server_port: 587
-        username: vasalanga@traxiontech.net
-        password: Vincent213@
-        subject: Playwright Test Results for TPayWeb_V3
-        to: salangavincent@gmail.com
-        from: vasalanga@traxiontech.net
+        username: 841d57002@smtp-brevo.com
+        password: T2CfG1kwQ4SNaUYE
+        subject: Playwright Test Results
+        to: vasalanga@traxiontech.net
+        from: 841d57002@smtp-brevo.com
         body: |
-          The Playwright tests for TPayWeb_V3 have completed. Please find the attached report.
+          The Playwright tests have completed. Please find the attached report.
         attachments: playwright-report/index.html

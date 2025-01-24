@@ -34,7 +34,7 @@ jobs:
         username: vasalanga@traxiontech.net
         password: Vincent213@
         subject: Playwright Test Results for TPayWeb_V3
-        to: salangavincent@gmail.com
+        to: vasalanga@traxiontech.net
         from: vasalanga@traxiontech.net
         body: |
           The Playwright tests for TPayWeb_V3 have completed. Please find the attached report.
