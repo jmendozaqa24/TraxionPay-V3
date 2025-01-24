@@ -47,5 +47,11 @@ jobs:
         to: salangavincent@gmail.com
         from: vasalanga@traxiontech.net 
         body: |
-          The Playwright tests for TPayWeb_V3 have completed. Please find the Allure report at the following link:http://localhost:8080
+          <html>
+            <body>
+              <h1>Playwright Test Results for TPayWeb_V3</h1>
+              <p>The Playwright tests for TPayWeb_V3 have completed. Please find the Allure report at the following link:</p>
+              <p><a href="http://localhost:8080">View Allure Report</a></p>
+            </body>
+          </html>
         
