@@ -70,7 +70,7 @@ jobs:
         server_address: smtp-relay.brevo.com
         server_port: 587
         username: 841d57002@smtp-brevo.com
-        password: T2CfG1kwQ4SNaUYE
+        password: xsmtpsib-4f0bcc1e2f16cc3d67b475d6546b50fee87dd6173961afb5b4defdd54d78898b-VDqZOFh6QWz95ICP
         subject: Playwright Test Results
         to: vasalanga@traxiontech.net
         from: TraxionAutomationReport@smtp-brevo.com
