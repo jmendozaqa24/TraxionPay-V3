@@ -35,16 +35,6 @@ jobs:
         name: allure-report
         path: allure-report/
         retention-days: 30
-    - name: Prepare email content
-      id: prepare_email
-      run: |
-        DATE=$(date)
-        TEST_RESULTS="<tr><td>Example Test Case</td><td>Passed</td><td>30s</td></tr>"
-        EMAIL_CONTENT=$(cat email_template.html)
-        EMAIL_CONTENT=${EMAIL_CONTENT//"{{DATE}}"/$DATE}
-        EMAIL_CONTENT=${EMAIL_CONTENT//"{{TEST_RESULTS}}"/$TEST_RESULTS}
-        EMAIL_CONTENT=${EMAIL_CONTENT//"{{CI_LINK}}"/"http://localhost:8080"}
-        echo "$EMAIL_CONTENT" > email_content.html
     - name: Send email with test results for TPayWeb_V3
       if: always()
       uses: dawidd6/action-send-mail@v4
@@ -56,5 +46,12 @@ jobs:
         password: yszeszihrsqreloy
         to: salangavincent@gmail.com
         from: vasalanga@traxiontech.net
-        html_body: file://html-report/email_content.html
+        body: |
+          <html>
+            <body>
+              <h1>Playwright Test Results for TPayWeb_V3</h1>
+              <p>The Playwright tests for TPayWeb_V3 have completed. Please find the Allure report at the following link:</p>
+              <p><a href="http://localhost:8080">View Allure Report</a></p>
+            </body>
+          </html>
         
