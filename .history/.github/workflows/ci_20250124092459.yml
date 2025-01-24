@@ -32,7 +32,7 @@ jobs:
         server_address: smtp.gmail.com
         server_port: 587
         username: vasalanga@traxiontech.net
-        password: fiujwmwqaztqjbwp
+        password: fiuj wmwq aztq jbwp
         subject: Playwright Test Results for TPayWeb_V3
         to: salangavincent@gmail.com
         from: vasalanga@traxiontech.net
