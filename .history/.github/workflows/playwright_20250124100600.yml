@@ -55,11 +55,11 @@ jobs:
       run: npm ci
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
+    - name: Run TPayWeb_V3 Playwright Tests
+      run: npx playwright test TPayWeb_V3
     - name: Generate Allure Report
       run: |
             npm run clean:allure
-    - name: Run TPayWeb_V3 Playwright Tests
-      run: npx playwright test TPayWeb_V3
     - name: Serve Allure Report
       run: |
         npx allure open allure-report --port 8080 &
