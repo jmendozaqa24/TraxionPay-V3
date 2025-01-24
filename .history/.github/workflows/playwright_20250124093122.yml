@@ -57,14 +57,11 @@ jobs:
       run: npx playwright install --with-deps
     - name: Run TPayWeb_V3 Playwright Tests
       run: npx playwright test TPayWeb_V3
-    - name: Generate Allure Report
-      run: |
-        npx allure generate allure-results --clean -o allure-report
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
-        name: allure-report
-        path: allure-report/
+        name: playwright-report-tpayweb-v3
+        path: playwright-report/
         retention-days: 30
     - name: Send email with test results for TPayWeb_V3
       if: always()
