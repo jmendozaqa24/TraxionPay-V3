@@ -39,18 +39,21 @@ jobs:
       id: prepare_email
       run: |
         DATE=$(date)
-        TEST_RESULTS="<tr><td>Example Test Case</td><td>Passed</td><td>30s</td></tr>"
-        EMAIL_CONTENT=$(cat html-report/email_template.html)
+        EMAIL_CONTENT=$(cat email_template.html)
         EMAIL_CONTENT=${EMAIL_CONTENT//"{{DATE}}"/$DATE}
         EMAIL_CONTENT=${EMAIL_CONTENT//"{{TEST_RESULTS}}"/$TEST_RESULTS}
         EMAIL_CONTENT=${EMAIL_CONTENT//"{{CI_LINK}}"/"http://localhost:8080"}
-        echo "$EMAIL_CONTENT" > html-report/email_content.html
+        echo "$EMAIL_CONTENT" > email_template.html
     - name: Send email with test results for TPayWeb_V3
       if: always()
       uses: dawidd6/action-send-mail@v4
       with:
-        connection_url: smtp://vasalanga@traxiontech.net:yszeszihrsqreloy@smtp.gmail.com:587
-        subject: Playwright Test Results for TPayWeb_V3
+        server_address: smtp.gmail.com
+        server_port: 587
+        username: vasalanga@traxiontech.net
+        subject: Playwright Test Result
+        password: yszeszihrsqreloy
         to: salangavincent@gmail.com
         from: vasalanga@traxiontech.net
-        html_body: file://html-report/email_content.html
+        html_body: file://html-report/email_template.html
+        

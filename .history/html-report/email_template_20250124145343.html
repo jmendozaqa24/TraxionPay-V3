@@ -82,6 +82,20 @@
     <div class="content">
       <h2>Summary</h2>
       <p><strong>Date:</strong> {{DATE}}</p>
+
+      <h2>Test Results</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Test Case</th>
+            <th>Status</th>
+            <th>Duration</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{TEST_RESULTS}}
+        </tbody>
+      </table>
       <h2>Details</h2>
       <p>For detailed logs and results, please click the button below:</p>
       <p><a href="{{CI_LINK}}" class="button">View Report</a></p>
