@@ -46,4 +46,4 @@ jobs:
         to: salangavincent@gmail.com
         from: vasalanga@traxiontech.net 
         body: |
-          The Playwright tests for TPayWeb_V3 have completed. Please find the Allure report at the following link: https://Dread-Vin.github.io/TraxionPay-V3/
+          The Playwright tests for TPayWeb_V3 have completed. Please find the Allure report at the following link: https://<your-github-username>.github.io/<your-repo-name>/
