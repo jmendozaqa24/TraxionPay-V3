@@ -40,7 +40,6 @@ jobs:
         name: allure-report
         path: allure-report/
         retention-days: 30
-        
     - name: Send email with test results for TPayWeb_V3
       if: always()
       uses: dawidd6/action-send-mail@v4
