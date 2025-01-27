@@ -32,8 +32,8 @@ jobs:
 
     - name: Serve Allure Report
       run: |
-        npx allure open allure-report --port 9090 &
-        echo "Allure report is being served at http://localhost:9090"
+        npx allure open allure-report --port 8080 &
+        echo "Allure report is being served at http://localhost:8080"
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
@@ -53,5 +53,5 @@ jobs:
         to: salangavincent@gmail.com
         from: vasalanga@traxiontech.net 
         body: |
-          The Playwright tests for TPayWeb_V3 have completed. Please find the Allure report at the following link:http://localhost:9090
+          The Playwright tests for TPayWeb_V3 have completed. Please find the Allure report at the following link:http://localhost:8080
         
