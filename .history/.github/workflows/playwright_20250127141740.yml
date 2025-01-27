@@ -31,7 +31,7 @@ jobs:
     - name: Deploy Allure Report to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
-        github_token: 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
+        github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./allure-report
 
     - name: Send email with test results for TPayWeb_V3
