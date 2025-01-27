@@ -23,15 +23,17 @@ jobs:
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
 
-    - name: Clean Allure Results
-      run: npm run clean:allure
-
     - name: Run TPayWeb_V3 Playwright Tests
       run: npx playwright test Main/TPayWeb_V3/1_Login_TPayV3_Merchant.spec.ts
 
-    - name: Generate and Serve Allure Report
-      run: npm run allure:report
+    - name: Generate Allure Report
+      run: |
+        npx allure generate allure-results --clean -o allure-report
 
+    - name: Serve Allure Report
+      run: |
+        npx allure open allure-report --port 8080 &
+        echo "Allure report is being served at http://localhost:8080"
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
@@ -52,3 +54,4 @@ jobs:
         from: vasalanga@traxiontech.net 
         body: |
           The Playwright tests for TPayWeb_V3 have completed. Please find the Allure report at the following link:http://localhost:8080
+        
