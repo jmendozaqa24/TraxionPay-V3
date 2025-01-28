@@ -34,7 +34,6 @@ test('page visits', async ({ page }) => {
   await page.goto('https://merchant-sit.traxionpay.com/signin');
 });
 
-
 test('Valid Login', async ({ page }) => {
   const correctUser = getRandomCorrectUser();
 
