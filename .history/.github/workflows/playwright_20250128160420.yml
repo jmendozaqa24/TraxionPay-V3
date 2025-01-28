@@ -29,11 +29,9 @@ jobs:
       run: |
         npx allure generate allure-results --clean -o allure-report
 
-    - name: Convert Allure Report to Single HTML
+    - name: Serve Allure Report
       run: |
-        npx allure generate allure-results --clean -o allure-report
-        npx html-inline -i allure-report/index.html -o allure-report/single-report.html
-
+        npx allure open allure-report --port 8080
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
@@ -53,6 +51,4 @@ jobs:
         to: salangavincent@gmail.com
         from: vasalanga@traxiontech.net
         body: |
-            The Playwright tests for TPayWeb_V3 have completed. Please find the Allure report below:
-        content_type: text/html
-        body_file: allure-report/single-report.html
+            The Playwright tests for TPayWeb_V3 have completed. Please find the Allure report at the following link:http://localhost:8080
