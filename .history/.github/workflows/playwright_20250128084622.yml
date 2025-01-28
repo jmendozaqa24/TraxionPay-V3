@@ -38,6 +38,7 @@ jobs:
     - name: Serve Allure Report
       run: serve -s allure-report -l 8080 &
       
+
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
