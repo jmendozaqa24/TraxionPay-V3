@@ -1,2 +1,0 @@
-"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
-"","9727","Valid Login","chromium","Mon Jan 27 11:52:52 PST 2025","failed","Mon Jan 27 11:53:01 PST 2025","","TPayWeb_V3\1_Login_TPayV3_Merchant.spec.ts","",""
