@@ -37,9 +37,7 @@ jobs:
       
       # Deploy Allure Report to GitHub Pages
       - name: Deploy Allure Report to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
-        
-        if: github.ref == 'refs/heads/main'
+        uses: peaceiris/actions-gh-pages@v4.0.0
         with:
           github_token: ${{ secrets.GH_PAT }}
           publish_dir: ./allure-report
