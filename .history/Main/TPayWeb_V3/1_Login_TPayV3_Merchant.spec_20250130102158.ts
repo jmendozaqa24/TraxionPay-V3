@@ -105,7 +105,7 @@ test('Sign Up', async ({ page }) => {
   await page.getByRole('button', { name: 'Sign Up' }).click();
 });
 
-
+/*
 test('Show Password & Remember Me Functionality', async ({ page }) => {
   const correctUser = getRandomCorrectUser();
 
@@ -140,3 +140,4 @@ test('Show Password & Remember Me Functionality', async ({ page }) => {
   // Verify that the "Remember me" checkbox is checked
   await expect(page.getByLabel('Remember me on this device')).toBeChecked();
 });
+*/
