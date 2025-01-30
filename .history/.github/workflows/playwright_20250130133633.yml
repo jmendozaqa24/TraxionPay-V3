@@ -64,8 +64,8 @@ jobs:
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <title>Test Results Notification</title>
             </head>
-            <body style="font-family: Arial, sans-serif; background-color: #F7EEDD; margin: 0; padding: 0;">
-                <div style="max-width: 600px; margin: 20px auto; background-color: #F7EEDD; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+            <body style="font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0;">
+                <div style="max-width: 600px; margin: 20px auto; background-color: #ffffff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
                     <div style="text-align: center; padding-bottom: 20px;">
                         <h1 style="color: #333333; margin: 0;">Test Results Notification</h1>
                     </div>
@@ -74,7 +74,7 @@ jobs:
                             The Playwright tests for TPayWeb_V3 have completed. Please find the Allure report at the following link:
                         </p>
                         <a href="https://dread-vin.github.io/TraxionPay-V3/" 
-                            style="display: inline-block; padding: 10px 20px; margin-top: 20px; font-size: 16px; color: #000000; background-color: #41C9E2; border-radius: 5px; text-decoration: none;">
+                            style="display: inline-block; padding: 10px 20px; margin-top: 20px; font-size: 16px; color: #000000; background-color: #007BFF; border-radius: 5px; text-decoration: none;">
                             View Allure Report
                         </a>
                     </div>
