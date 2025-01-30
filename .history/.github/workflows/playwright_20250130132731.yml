@@ -100,7 +100,7 @@ jobs:
                         padding: 10px 20px;
                         margin-top: 20px;
                         font-size: 16px;
-                        font-color:rgb(0, 0, 0);
+                        font-color: #ffffff;
                         background-color: #007BFF;
                         border-radius: 5px;
                         text-decoration: none;
