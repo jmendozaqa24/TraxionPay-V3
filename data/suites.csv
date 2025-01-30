@@ -1,3 +1,3 @@
 "DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
-"","3482","test navigation","chromium","Thu Jan 30 10:10:59 PST 2025","passed","Thu Jan 30 10:11:03 PST 2025","","TPayWeb_V3\test.app.spec.ts","",""
-"","498","test navigation","firefox","Thu Jan 30 10:11:05 PST 2025","passed","Thu Jan 30 10:11:06 PST 2025","","TPayWeb_V3\test.app.spec.ts","",""
+"","470","test navigation","firefox","Thu Jan 30 10:15:47 PST 2025","passed","Thu Jan 30 10:15:48 PST 2025","","TPayWeb_V3\test.app.spec.ts","",""
+"","514","test navigation","chromium","Thu Jan 30 10:15:45 PST 2025","passed","Thu Jan 30 10:15:46 PST 2025","","TPayWeb_V3\test.app.spec.ts","",""
