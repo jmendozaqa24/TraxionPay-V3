@@ -1,0 +1,130 @@
+name: Playwright Tests
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  run-tpayweb-v3-tests:
+    timeout-minutes: 60
+    runs-on: self-hosted
+    steps:
+    - uses: actions/checkout@v4
+
+    - uses: actions/setup-node@v4
+      with:
+        node-version: lts/*
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Install Playwright Browsers
+      run: npx playwright install --with-deps
+
+    - name: Run TPayWeb_V3 Playwright Tests
+      run: npx playwright test Main/TPayWeb_V3/1_Login_TPayV3_Merchant.spec.ts
+
+    - name: Generate Allure Report
+      if: always()  # Run even if tests fail
+      run: |
+        npx allure generate allure-results --clean -o allure-report 
+
+    - name: Deploy Allure Report to GitHub Pages
+      if: always()  # Run even if tests fail
+      uses: peaceiris/actions-gh-pages@v4
+      with:
+        github_token: ${{ secrets.GH_PAT }}  # Use the PAT here
+        publish_dir: allure-report
+        keep_files: false
+        publish_branch: gh-pages
+        allow_empty_commit: false
+        force_orphan: false
+        enable_jekyll: false
+        disable_nojekyll: false
+        exclude_assets: .github
+
+        - name: Send email with test results for TPayWeb_V3
+        if: always()
+        uses: dawidd6/action-send-mail@v4
+        with:
+          server_address: smtp.gmail.com
+          server_port: 587
+          username: vasalanga@traxiontech.net
+          subject: Playwright Test Result
+          password: yszeszihrsqreloy
+          to: salangavincent@gmail.com
+          from: vasalanga@traxiontech.net
+          html_body: |
+              <!DOCTYPE html>
+              <html lang="en">
+              <head>
+                  <meta charset="UTF-8">
+                  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                  <title>Test Results Notification</title>
+                  <style>
+                      body {
+                          font-family: Arial, sans-serif;
+                          background-color: #f4f4f4;
+                          margin: 0;
+                          padding: 0;
+                      }
+                      .email-container {
+                          max-width: 600px;
+                          margin: 20px auto;
+                          background-color: #ffffff;
+                          padding: 20px;
+                          border-radius: 8px;
+                          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                      }
+                      .header {
+                          text-align: center;
+                          padding-bottom: 20px;
+                      }
+                      .header h1 {
+                          color: #333333;
+                          margin: 0;
+                      }
+                      .content {
+                          text-align: center;
+                          padding: 20px 0;
+                      }
+                      .content p {
+                          color: #555555;
+                          font-size: 16px;
+                          line-height: 1.6;
+                      }
+                      .button {
+                          display: inline-block;
+                          padding: 10px 20px;
+                          margin-top: 20px;
+                          font-size: 16px;
+                          color: #ffffff;
+                          background-color: #007BFF;
+                          border-radius: 5px;
+                          text-decoration: none;
+                      }
+                      .footer {
+                          text-align: center;
+                          padding-top: 20px;
+                          font-size: 14px;
+                          color: #888888;
+                      }
+                  </style>
+              </head>
+              <body>
+                  <div class="email-container">
+                      <div class="header">
+                          <h1>Test Results Notification</h1>
+                      </div>
+                      <div class="content">
+                          <p>The Playwright tests for TPayWeb_V3 have completed. Please find the Allure report at the following link:</p>
+                          <a href="https://dread-vin.github.io/TraxionPay-V3/" class="button">View Allure Report</a>
+                      </div>
+                      <div class="footer">
+                          <p>This is an automated message. Please do not reply.</p>
+                      </div>
+                  </div>
+              </body>
+              </html>
