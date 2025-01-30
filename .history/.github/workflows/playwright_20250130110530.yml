@@ -24,7 +24,7 @@ jobs:
       run: npx playwright install --with-deps
 
     - name: Run TPayWeb_V3 Playwright Tests
-      run: npx playwright test Main/TPayWeb_V3/1_Login_TPayV3_Merchant.spec.ts
+      run: npx playwright test Main/TPayWeb_V3/test.app.spec.ts
 
     - name: Generate Allure Report
       run: |
