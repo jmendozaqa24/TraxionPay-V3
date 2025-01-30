@@ -33,15 +33,13 @@ jobs:
     
     - name: Serve Allure Report
       run: |
-        # Get the full path to http-server
-        $httpServerPath = Join-Path -Path (npm bin) -ChildPath "http-server"
-        # Start the http-server in the background
-        Start-Process -NoNewWindow -FilePath "node" -ArgumentList "$httpServerPath allure-report -p 8080"
-        echo "Allure report is being served at http://localhost:8080"
-        # Wait for 15 minutes (900 seconds) before stopping the server
-        Start-Sleep -Seconds 900
-        # Stop the server
-        Stop-Process -Name "node" -Force
+          # Start the http-server in the background on Windows
+          Start-Process -NoNewWindow -FilePath "npx" -ArgumentList "http-server allure-report -p 8080"
+          echo "Allure report is being served at http://localhost:8080"
+          # Wait for 15 minutes (900 seconds) before stopping the server
+          Start-Sleep -Seconds 900
+          # Stop the server
+          Stop-Process -Name "node" -Force
     
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}

@@ -31,7 +31,7 @@ jobs:
     - name: Install http-server
       run: npm install http-server
     
-    - name: Serve Allure Report
+      - name: Serve Allure Report
       run: |
         # Get the full path to http-server
         $httpServerPath = Join-Path -Path (npm bin) -ChildPath "http-server"
