@@ -25,10 +25,9 @@ test.describe.parallel('Mobile - Login Page', () => {
         await page.getByRole('button', { name: 'Skip' }).click();
         //condition to pass
         await expect(page).toHaveURL('https://traxionpay-app.web.app/#/login');
-        await page.waitForTimeout(1000); 
+
         //login
         await page.getByLabel('9XX XXX XXXX').fill('9947369780');
-        await page.waitForTimeout(1000); 
         await page.getByLabel('Enter Password').fill('Traxion123!');
 
         await page.getByRole('button', { name: 'Login' }).click();
