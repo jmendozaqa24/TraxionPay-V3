@@ -47,7 +47,7 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
 
       - name: Run TPayMobile_V3 Playwright Tests
-        run: npx playwright test Main/TPayMobile_V3 --project=mobile
+        run: npx playwright test Main/TPayMobile_V3 --project=chromium
 
       - name: Upload Allure Results
         uses: actions/upload-artifact@v4
