@@ -94,8 +94,8 @@ jobs:
         server_port: 587
         username: vasalanga@traxiontech.net
         subject: Playwright Test Result
-        password: yszeszihrsqreloy
-        to: salangavincent@gmail.com
+        password: ${{ secrets.EMAIL_PASSWORD }}
+        to: qa@traxiontech.net
         from: vasalanga@traxiontech.net
         html_body: |
             <!DOCTYPE html>
