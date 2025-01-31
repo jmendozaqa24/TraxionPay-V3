@@ -56,14 +56,10 @@ export default defineConfig({
     },
 
     /* Test against mobile viewports. */
-    {
-      name: 'Samsung Galaxy S8+',
-      use: {
-        ...devices['Mobile Galaxy S8+'],
-        viewport: { width: 360, height: 740 },
-        userAgent: 'Mozilla/5.0 (Linux; Android 7.0; SM-G955F Build/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/60.0.3112.107 Mobile Safari/537.36'
-      },
-    },
+     {
+      name: 'Mobile Chrome',
+      use: { ...devices['Pixel 5'] },
+     },
     // {
     //   name: 'Mobile Safari',
     //   use: { ...devices['iPhone 12'] },
@@ -78,7 +74,6 @@ export default defineConfig({
     //   name: 'Google Chrome',
     //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
     // },
- 
   ],
 
   /* Run your local dev server before starting the tests */

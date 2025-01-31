@@ -78,7 +78,16 @@ export default defineConfig({
     //   name: 'Google Chrome',
     //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
     // },
- 
+
+    hooks: {
+      beforeEach: async ({ page }) => {
+        const { width, height } = await page.evaluate(() => ({
+          width: window.screen.width,
+          height: window.screen.height,
+        }));
+        await page.setViewportSize({ width, height });
+      },
+    },
   ],
 
   /* Run your local dev server before starting the tests */
