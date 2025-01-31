@@ -1,4 +1,4 @@
 "DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
-"","342","test navigation","firefox","Fri Jan 31 10:27:11 PST 2025","passed","Fri Jan 31 10:27:12 PST 2025","","TPayWeb_V3\test.app.spec.ts","",""
-"","212","test navigation","Samsung Galaxy S8+","Fri Jan 31 10:27:12 PST 2025","passed","Fri Jan 31 10:27:12 PST 2025","","TPayWeb_V3\test.app.spec.ts","",""
-"","337","test navigation","chromium","Fri Jan 31 10:27:10 PST 2025","passed","Fri Jan 31 10:27:11 PST 2025","","TPayWeb_V3\test.app.spec.ts","",""
+"","307","test navigation","firefox","Fri Jan 31 10:57:26 PST 2025","passed","Fri Jan 31 10:57:26 PST 2025","","TPayWeb_V3\test.app.spec.ts","",""
+"","209","test navigation","Samsung Galaxy S8+","Fri Jan 31 10:57:27 PST 2025","passed","Fri Jan 31 10:57:27 PST 2025","","TPayWeb_V3\test.app.spec.ts","",""
+"","3080","test navigation","chromium","Fri Jan 31 10:57:22 PST 2025","passed","Fri Jan 31 10:57:25 PST 2025","","TPayWeb_V3\test.app.spec.ts","",""
