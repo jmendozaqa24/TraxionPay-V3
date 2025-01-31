@@ -59,7 +59,7 @@ jobs:
         username: vasalanga@traxiontech.net
         subject: Playwright Test Result
         password: yszeszihrsqreloy
-        to: qa@traxiontech.net
+        to: QA@traxiontech.net
         from: vasalanga@traxiontech.net
         html_body: |
             <!DOCTYPE html>
