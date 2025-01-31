@@ -65,7 +65,7 @@ jobs:
                 <title>Test Results Notification</title>
             </head>
             <body style="font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0;">
-                <div style="max-width: 600px; margin: 20px auto; background-color: #ffffff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+                <div style="max-width: 600px; margin: 20px auto; background-color: #f4f4f4; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
                     <div style="text-align: center; padding-bottom: 20px;">
                         <h1 style="color: #333333; margin: 0;, height: ">Test Results Notification</h1>
                     </div>
@@ -75,7 +75,7 @@ jobs:
                         </p>
                         <a href="https://dread-vin.github.io/TraxionPay-V3/" 
                             style="display: inline-block; padding: 10px 20px; margin-top: 20px; font-size: 16px; color: #000000; background-color: #41C9E2; border-radius: 5px; text-decoration: none;">
-                            View Allure Report
+                            View Allure Repo  rt
                         </a>
                     </div>
                     <div style="text-align: center; padding-top: 20px; font-size: 14px; color: #888888;">
