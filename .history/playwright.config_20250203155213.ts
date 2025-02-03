@@ -62,11 +62,8 @@ export default defineConfig({
       name: 'Samsung Galaxy S8+',
       use: {
         ...devices['Mobile Galaxy S8+'],
-        viewport: { width: 400, height: 780 },
-        userAgent: 'Mozilla/5.0 (Linux; Android 7.0; SM-G955F Build/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/60.0.3112.107 Mobile Safari/537.36',
-        launchOptions:{
-          slowMo:100,
-        },
+        viewport: { width: 400, height: 740 },
+        userAgent: 'Mozilla/5.0 (Linux; Android 7.0; SM-G955F Build/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/60.0.3112.107 Mobile Safari/537.36'
       },
     },
     // {

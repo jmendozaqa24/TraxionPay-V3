@@ -27,9 +27,9 @@ test.describe.parallel('Mobile - Login Page', () => {
         await expect(page).toHaveURL('https://traxionpay-app.web.app/#/login');
         await page.waitForTimeout(1000); 
         //login
-        await page.getByLabel('9XX XXX XXXX').focus();
         await page.getByLabel('9XX XXX XXXX').fill('9947369780');
-
+        await page.waitForTimeout(1000);
+        await page.waitForTimeout(1000);
         await page.getByLabel('Enter Password').focus();
         await page.getByLabel('Enter Password').fill('Traxion123!');
 

@@ -86,7 +86,7 @@ test('Invalid Login', async ({ page }) => {
   if (randomPassword.length < 8) {
     await expect(page.getByText('Missing or invalid input. Try again.')).toBeVisible();
   } else {
-    await expect(page.getByText('Authentication error. ')).toBeVisible();
+    await expect(page.getByText('Authentication error.')).toBeVisible();
   }
 });
 

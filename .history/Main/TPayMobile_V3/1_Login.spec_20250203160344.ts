@@ -29,7 +29,8 @@ test.describe.parallel('Mobile - Login Page', () => {
         //login
         await page.getByLabel('9XX XXX XXXX').focus();
         await page.getByLabel('9XX XXX XXXX').fill('9947369780');
-
+        await page.waitForTimeout(1000);
+        await page.waitForTimeout(1000);
         await page.getByLabel('Enter Password').focus();
         await page.getByLabel('Enter Password').fill('Traxion123!');
 

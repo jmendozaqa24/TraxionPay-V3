@@ -74,7 +74,7 @@ test('Invalid Login', async ({ page }) => {
 
   await page.getByPlaceholder('your@email.com').fill(incorrectUser.email);
   await page.getByPlaceholder('your password').fill(randomPassword);
-  await page.getByRole('button', { name: 'Sign in' }).click()
+  page.getByRole('button', { name: 'Sign in' }).click()
   // Add on this part the API validation
   //const [response] = await Promise.all([
   //  page.waitForResponse(response => response.url().includes('/api/signin') && [400, 404].includes(response.status())),
@@ -86,7 +86,7 @@ test('Invalid Login', async ({ page }) => {
   if (randomPassword.length < 8) {
     await expect(page.getByText('Missing or invalid input. Try again.')).toBeVisible();
   } else {
-    await expect(page.getByText('Authentication error. ')).toBeVisible();
+    await expect(page.getByText('Authentication error.')).toBeVisible();
   }
 });
 
