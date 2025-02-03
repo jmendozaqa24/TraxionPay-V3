@@ -1,14 +1,9 @@
 name: Playwright Tests
 
 on:
-  #schedule:
-  #  - cron: '0 */2 * * *'  # Runs every 2 hours
-  #workflow_dispatch:  # Allows manual triggering
-
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+  schedule:
+    - cron: '0 */2 * * *'  # Runs every 2 hours
+  workflow_dispatch:  # Allows manual triggering
 
 jobs:
   install-dependencies:
@@ -167,7 +162,7 @@ jobs:
           server_port: 587
           username: vasalanga@traxiontech.net
           subject: Playwright Test Result
-          password: yszeszihrsqreloy
+          password: ${{ secrets.EMAIL_PASSWORD }}
           to: qa@traxiontech.net
           from: vasalanga@traxiontech.net
           html_body: |
