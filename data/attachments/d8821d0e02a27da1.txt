@@ -1,0 +1,149 @@
+Using new secret key TOTP for WhoAmI request.
+Generated OTP 839962
+Using SECRETKEY XYKKAAXUEWGBXMLB
+{
+  data: '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'
+}
+RESPONSE DATA {
+  code: 202020,
+  message: 'User profile fetched successfully.',
+  timestamp: 1738655484699,
+  data: {
+    id: 1,
+    userName: '+639777781410',
+    userLevel: 100,
+    userCode: '9D6FC8E3-F780-4676-A311-6FF8CED1CC09',
+    personId: 1,
+    personCode: '4BA7CD0A-5A5D-4F3D-9A52-F3B6A3363F6C',
+    walletId: 1,
+    walletCode: 'TP-20240831-115909-355652',
+    accountNumber: '1011907995876228',
+    merchantId: 10,
+    merchantCode: '56A5BF1F-82BE-4172-9EB5-3A0E205B6526',
+    secretKey: 'XYKKAAXUEWGBXMLB',
+    roleId: 8,
+    applicationId: 1,
+    profile: {
+      id: '1',
+      personCode: '4BA7CD0A-5A5D-4F3D-9A52-F3B6A3363F6C',
+      firstName: 'TraxionPay',
+      lastName: 'Administrator',
+      middleName: null,
+      suffix: null,
+      birthPlace: null,
+      gender: null,
+      civilStatus: null,
+      birthDate: null,
+      kycStatus: 3,
+      preRegistered: null,
+      avatarUrl: 'https://s3.ap-southeast-1.amazonaws.com/merchant-business-requirements-dev/51816ff9-3744-4392-ae01-ead8662575fe.png',
+      user: [Object],
+      nationality: null,
+      wallet: [Object],
+      personIdentifications: [],
+      personContacts: [Array],
+      personAddresses: [],
+      personWorks: []
+    }
+  }
+}
+{
+  code: 202020,
+  message: 'User profile fetched successfully.',
+  timestamp: 1738655484699,
+  data: {
+    id: 1,
+    userName: '+639777781410',
+    userLevel: 100,
+    userCode: '9D6FC8E3-F780-4676-A311-6FF8CED1CC09',
+    personId: 1,
+    personCode: '4BA7CD0A-5A5D-4F3D-9A52-F3B6A3363F6C',
+    walletId: 1,
+    walletCode: 'TP-20240831-115909-355652',
+    accountNumber: '1011907995876228',
+    merchantId: 10,
+    merchantCode: '56A5BF1F-82BE-4172-9EB5-3A0E205B6526',
+    secretKey: 'XYKKAAXUEWGBXMLB',
+    roleId: 8,
+    applicationId: 1,
+    profile: {
+      id: '1',
+      personCode: '4BA7CD0A-5A5D-4F3D-9A52-F3B6A3363F6C',
+      firstName: 'TraxionPay',
+      lastName: 'Administrator',
+      middleName: null,
+      suffix: null,
+      birthPlace: null,
+      gender: null,
+      civilStatus: null,
+      birthDate: null,
+      kycStatus: 3,
+      preRegistered: null,
+      avatarUrl: 'https://s3.ap-southeast-1.amazonaws.com/merchant-business-requirements-dev/51816ff9-3744-4392-ae01-ead8662575fe.png',
+      user: [Object],
+      nationality: null,
+      wallet: [Object],
+      personIdentifications: [],
+      personContacts: [Array],
+      personAddresses: [],
+      personWorks: []
+    }
+  }
+}
+{
+  id: 1,
+  userName: '+639777781410',
+  userLevel: 100,
+  userCode: '9D6FC8E3-F780-4676-A311-6FF8CED1CC09',
+  personId: 1,
+  personCode: '4BA7CD0A-5A5D-4F3D-9A52-F3B6A3363F6C',
+  walletId: 1,
+  walletCode: 'TP-20240831-115909-355652',
+  accountNumber: '1011907995876228',
+  merchantId: 10,
+  merchantCode: '56A5BF1F-82BE-4172-9EB5-3A0E205B6526',
+  secretKey: 'XYKKAAXUEWGBXMLB',
+  roleId: 8,
+  applicationId: 1,
+  profile: {
+    id: '1',
+    personCode: '4BA7CD0A-5A5D-4F3D-9A52-F3B6A3363F6C',
+    firstName: 'TraxionPay',
+    lastName: 'Administrator',
+    middleName: null,
+    suffix: null,
+    birthPlace: null,
+    gender: null,
+    civilStatus: null,
+    birthDate: null,
+    kycStatus: 3,
+    preRegistered: null,
+    avatarUrl: 'https://s3.ap-southeast-1.amazonaws.com/merchant-business-requirements-dev/51816ff9-3744-4392-ae01-ead8662575fe.png',
+    user: {
+      id: '1',
+      userCode: '9D6FC8E3-F780-4676-A311-6FF8CED1CC09',
+      userLevel: 100,
+      isActive: true,
+      isLocked: false,
+      remarks: null,
+      role: [Object]
+    },
+    nationality: null,
+    wallet: {
+      id: '1',
+      walletCode: 'TP-20240831-115909-355652',
+      accountNumber: '1011907995876228',
+      currency: 'PHP',
+      currentBalance: '97752500',
+      isSubWallet: null,
+      remarks: null,
+      walletAccountType: [Object],
+      verificationStatus: [Object],
+      walletScope: [Object]
+    },
+    personIdentifications: [],
+    personContacts: [ [Object], [Object] ],
+    personAddresses: [],
+    personWorks: []
+  }
+}
