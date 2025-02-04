@@ -1,3 +1,0 @@
-Using new secret key TOTP for Refresh Token request.
-Generated OTP 664613
-Using SECRETKEY XYKKAAXUEWGBXMLB
