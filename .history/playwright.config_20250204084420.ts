@@ -31,6 +31,9 @@ export default defineConfig({
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
   },
+  testIgnore: ['playwright.config.ts'], // This prevents Playwright from treating it as a test file
+
+
    /* Configure projects for major browsers */
    projects: [
     {
