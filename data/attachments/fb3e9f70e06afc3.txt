@@ -1,0 +1,23 @@
+Checking visibility of the account link...
+Account Number: Visible
+Account: Account:  1011-9079-9587-6228
+Checking visibility of the current currency link...
+Current Currency: Visible
+Current: Current: 
+                    PHP 977,525.00
+Checking visibility of the available currency link...
+Available Currency: Visible
+Available: Available: 
+                    PHP 975,421.00
+Checking visibility of the heading...
+Heading: Visible
+Heading: 1011-9079-9587-6228
+Checking visibility of the email link...
+Email: Visible
+Email: mmontes@traxiontech.net
+Checking visibility of the QR code image...
+QR Code Image: Visible
+QR Code: QR Code
+Checking visibility of the phone number...
+Phone Number: Visible
+Phone: +639777781410
