@@ -27,12 +27,12 @@ jobs:
       - name: Run TPayWeb_V3 Playwright Tests
         if: always()
         run: | 
-          npx playwright test Main/TPayWeb_V3/2_UserProfile_TPayV3-merchant.spec.ts --project=chromium
+          npx playwright test Main/TPayWeb_V3 --project=chromium
 
-      #- name: Run TPayMobile_V3 Playwright Tests
-      #  if: always()
-      #  run: |
-      #    npx playwright test Main/TPayMobile_V3 --project=mobile
+      - name: Run TPayMobile_V3 Playwright Tests
+        if: always()
+        run: |
+          npx playwright test Main/TPayMobile_V3 --project=mobile
 
       #- name: Run TPayWeb_API_V3 Playwright Tests
       #  if: always()
