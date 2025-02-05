@@ -1,0 +1,113 @@
+Generated OTP 035730
+Using SECRETKEY XYKKAAXUEWGBXMLB
+{
+  data: 'U2FsdGVkX1+isUqwK73BR5nyUl62Xr9Ce4rdihb/JxeNNg6biBT6BE8C+5pOVHNFGXdxKOZnu4OtRQl+A8rTwRduDnttrRNhxgSFTfRrNMYtz1x3b9OW/XIxpraC00XG1tXv+ZD1EKcF1u52u+C7IY8L+4JKrAEPpjrimGX0Inw+lMC/KtV8Bgm8RJ4fBKpDLOeN6GPyheSQs2Xp7vOFhkBwB9HI0UsfP60ZKCj+6u41EJWMNM5mYLNcRwNLsy9I9WFBgUrgGr8R/6fofd/fwOf8wcp9sdCLw0025WnBGHyXkpA8yvTVfGoKIFQpJ7hY5U7hsPz4HYhQxWnkDV0C30x8jDzNNQg6FHkDgWmYXL9Z/1mFX9E7LlUlfRNd79zO8NOUHA4rNO3QZorhr/gjlFxCs6e9vAKSIeNsWJn+BLiFzFxbvh0F+wTN+6SoH+fPADmdark2ZIfmF/Hge+YjNp/Z5wlmz3wwJ7bIMSeGvEWWpMGw4XE8TlDr8Z+GEVuRThcxa15/R/Pd2Z8FaKubAC4CoMBiaTkkHgahjChrc6WyUUpDJHMRlqaqowCY0qjtoF7HPtK2A7r1nFtY8QjwijYO/wb5HWWm3vuLTNdM5Qp/379plQnCGUc2rtZc/G3uJ0occpRyi9TmCbg9FDIapKt2L4PDlGpCEcJKlqJOzL3GKJ8wqCd4VtTD1LiUvru7cC1wg1liwWkhpJPi5qyuSWm3Li3o1jy/cK69dsQHyZxBr2zYXIvoCVZhbyOwNScCkAYsbRw0O/DwLgJpIfc96PE4gnbaIkrM2uxIOt9L+O1MpnlXx7lfHCt19q0/o9Y2Rypryq1Wa6kP99ntyZ0SbyUCbYSbY9RcsCdhJjcTs5c/Xn9gbH9jkePqIi/TpKOnGf/9DqeH2LhJ0EiZFGF1Ut5wjWMWgYtMV/a9AmntEzj9LrG9WurCuo6FNMNjFyqJJqlo7aTp1BkJrHqj9ZhQM3eensWvR2w9aXze0MtxDkwiXdkEii+K6jEZtmCEQEfSpBoWLCBAOvHlUxx2WULUmK9PuHgIWNFTUr/yCW4Er4rf5XEGmjshpBgh1yp4TlNAVXqfLOt3pz+RwGxzuT8n5mdT80TU9FAxgIsI6IUaKGE='
+}
+RESPONSE DATA {
+  timestamp: 1738713686526,
+  code: 2020,
+  message: 'Person profile fetched successfully.',
+  data: {
+    id: '40602',
+    personCode: 'F688AA93-C66F-438A-A16F-5257CE7BA867',
+    firstName: null,
+    lastName: null,
+    middleName: null,
+    suffix: null,
+    birthPlace: null,
+    gender: null,
+    civilStatus: null,
+    birthDate: null,
+    kycStatus: null,
+    preRegistered: null,
+    avatarUrl: null,
+    user: {
+      id: '40596',
+      userCode: 'D270A91A-F517-460D-A52A-40CA1DAD7C70',
+      userLevel: 10,
+      isActive: true,
+      isLocked: false,
+      remarks: null,
+      role: [Object]
+    },
+    nationality: { id: '62', name: 'Filipino' },
+    wallet: null,
+    personIdentifications: [],
+    personContacts: [ [Object] ],
+    personAddresses: [],
+    personWorks: []
+  }
+}
+{
+  timestamp: 1738713686526,
+  code: 2020,
+  message: 'Person profile fetched successfully.',
+  data: {
+    id: '40602',
+    personCode: 'F688AA93-C66F-438A-A16F-5257CE7BA867',
+    firstName: null,
+    lastName: null,
+    middleName: null,
+    suffix: null,
+    birthPlace: null,
+    gender: null,
+    civilStatus: null,
+    birthDate: null,
+    kycStatus: null,
+    preRegistered: null,
+    avatarUrl: null,
+    user: {
+      id: '40596',
+      userCode: 'D270A91A-F517-460D-A52A-40CA1DAD7C70',
+      userLevel: 10,
+      isActive: true,
+      isLocked: false,
+      remarks: null,
+      role: [Object]
+    },
+    nationality: { id: '62', name: 'Filipino' },
+    wallet: null,
+    personIdentifications: [],
+    personContacts: [ [Object] ],
+    personAddresses: [],
+    personWorks: []
+  }
+}
+{
+  id: '40602',
+  personCode: 'F688AA93-C66F-438A-A16F-5257CE7BA867',
+  firstName: null,
+  lastName: null,
+  middleName: null,
+  suffix: null,
+  birthPlace: null,
+  gender: null,
+  civilStatus: null,
+  birthDate: null,
+  kycStatus: null,
+  preRegistered: null,
+  avatarUrl: null,
+  user: {
+    id: '40596',
+    userCode: 'D270A91A-F517-460D-A52A-40CA1DAD7C70',
+    userLevel: 10,
+    isActive: true,
+    isLocked: false,
+    remarks: null,
+    role: { id: '2', name: 'Merchant Admin', friendlyName: null }
+  },
+  nationality: { id: '62', name: 'Filipino' },
+  wallet: null,
+  personIdentifications: [],
+  personContacts: [
+    {
+      id: '40943',
+      value: 'vasalanga+3@traxiontech.net',
+      isActive: true,
+      isPrimary: true,
+      contactOption: [Object]
+    }
+  ],
+  personAddresses: [],
+  personWorks: []
+}
