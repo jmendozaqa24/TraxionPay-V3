@@ -1,3 +1,0 @@
-Generated OTP 850996
-Using SECRETKEY HCFQQARAAHRGMYDK
-Using hardcoded secret key for login TOTP generation.
