@@ -1,0 +1,61 @@
+{
+  "correctUsers": [
+    {
+      "email": "vasalanga+3@traxiontech.net",
+      "password": "Traxion123!"
+    },
+    {
+      "email": "vasalanga+2@traxiontech.net",
+      "password": "Traxion123!"
+    }
+  ],
+
+
+"testDataUsers": [
+    {
+      "email": "mmontes@traxiontech.net",
+      "password": "Traxion@01!"
+    }
+  ],
+
+"testUserProfile": [
+    {
+      "email": "vasalanga+2@traxiontech.net",
+      "password": "Traxion123!"
+    }
+  ],
+
+
+  "incorrectUsers": [
+    {
+      "email": "incorrect1@example.com"
+    },
+    
+    {
+      "email": "incorrect2@example.com"
+    }
+  ],
+  
+  "signUpUsers": [
+    {
+      "email": "signup1@example.com",
+      "mobile": "1234567890"
+    },
+    {
+      "email": "signup2@example.com",
+      "mobile": "0987654321"
+    },
+    {
+      "email": "signup3@example.com",
+      "mobile": "1122334455"
+    },
+    {
+      "email": "signup4@example.com",
+      "mobile": "5566778899"
+    },
+    {
+      "email": "signup5@example.com",
+      "mobile": "6677889900"
+    }
+  ]
+}

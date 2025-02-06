@@ -1,0 +1,5 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","2322","Merchant Details Tab","chromium","Wed Feb 05 14:37:04 PST 2025","passed","Wed Feb 05 14:37:06 PST 2025","TPay V3 - User Profile > TPay V3 - Settings Tab","TPayWeb_V3\2_UserProfile_TPayV3-Merchant.spec.ts","",""
+"","2470","My Account Tab","chromium","Wed Feb 05 14:37:01 PST 2025","passed","Wed Feb 05 14:37:04 PST 2025","TPay V3 - User Profile > TPay V3 - Settings Tab","TPayWeb_V3\2_UserProfile_TPayV3-Merchant.spec.ts","",""
+"","2600","Bank Accounts Tab","chromium","Wed Feb 05 14:37:06 PST 2025","passed","Wed Feb 05 14:37:09 PST 2025","TPay V3 - User Profile","TPayWeb_V3\2_UserProfile_TPayV3-Merchant.spec.ts","",""
+"","3037","Profile Tab","chromium","Wed Feb 05 14:36:56 PST 2025","passed","Wed Feb 05 14:36:59 PST 2025","TPay V3 - User Profile","TPayWeb_V3\2_UserProfile_TPayV3-Merchant.spec.ts","",""
