@@ -45,6 +45,7 @@ test.describe.serial('TPay V3 - User Profile', () => {
     console.log('Navigating to profile tab...');
     await page.waitForLoadState('networkidle');
     await page.getByLabel('Open user menu',{waitUntil: 'load'}).click();
+
     console.log('Clicked on user menu...');
     await page.waitForSelector('a:has-text("Profile")', { state: 'visible' });
     console.log('Profile link is visible...');

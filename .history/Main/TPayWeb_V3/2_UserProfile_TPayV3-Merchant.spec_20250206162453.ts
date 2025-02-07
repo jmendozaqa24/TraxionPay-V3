@@ -10,74 +10,53 @@ function getRandomCorrectUser() {
 // Helper function to log in
 async function login(page) {
   const testUserProfile = getRandomCorrectUser();
-  await page.goto('https://merchant-sit.traxionpay.com', {waitUntil: 'load'});
-  await page.waitForLoadState('networkidle');
+  await page.goto('https://merchant-sit.traxionpay.com/signin');
   await page.getByPlaceholder('your@email.com').fill(testUserProfile.email);
   await page.getByPlaceholder('your password').fill(testUserProfile.password);
-  await Promise.all([
-    page.waitForNavigation(),
-    page.getByRole('button', { name: 'Sign in' }).click()
-  ]);
+  await page.getByRole('button', { name: 'Sign in' }).click();
+
+  // Verify login success
+  await expect(page).toHaveURL('https://merchant-sit.traxionpay.com');
+  await expect(page.getByText('Overview')).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Dashboard' })).toBeVisible();
 }
 
-async function clickAndWaitForNavigation(page, selector) {
-  await Promise.all([
-    page.waitForNavigation(),
-    page.click(selector)
-  ]);
-}
 test.describe.serial('TPay V3 - User Profile', () => {
   let page;
 
-  test.beforeEach(async ({ browser }) => {
-    // Create a new browser context and page for each test
+  test.beforeAll(async ({ browser }) => {
+    // Create a new browser context and page
     const context = await browser.newContext();
     page = await context.newPage();
-    await login(page); // Log in before each test
   });
 
-  test.afterEach(async () => {
-    // Close the browser context after each test
+  test.afterAll(async () => {
+    // Close the browser context after all tests are done
     await page.close();
   });
 
-  test('Profile Tab', async () => {  
-    console.log('Navigating to profile tab...');
-    await page.waitForLoadState('networkidle');
-    await page.getByLabel('Open user menu',{waitUntil: 'load'}).click();
-    console.log('Clicked on user menu...');
-    await page.waitForSelector('a:has-text("Profile")', { state: 'visible' });
-    console.log('Profile link is visible...');
-    await Promise.all([
-      page.waitForNavigation(),
-      page.getByRole('link', { name: 'Profile' }).click(),
-    ]);
-    console.log('Clicked on Profile link...');
-  
-    console.log('Retrieving user details...');
-    await page.waitForSelector('h1.fw-bold', { state: 'visible' });
-    console.log('User details are visible...');
+  test('Profile Tab', async () => {
+    await login(page); // Log in before each test
+    await page.getByLabel('Open user menu').click();
+    await page.getByRole('link', { name: 'Profile' }).click();
+
+    // Retrieve and log user details
     const userName = await page.locator('h1.fw-bold').textContent() || 'N/A';
     console.log(`Name: ${userName}`);
-  
-    console.log('Checking if user is verified...');
+
+    // Check if the user is verified
     const isVerified = await page.getByRole('link', { name: 'Verified' }).isVisible();
     console.log(`User is ${isVerified ? 'VERIFIED' : 'NOT VERIFIED'}`);
   });
 
   test('My Account Tab', async () => {
-    test.setTimeout(60000); // Increase timeout to 60 seconds
-
-    console.log('Navigating to My Account tab...');
+    await login(page); // Log in before each test
     await page.getByLabel('Open user menu').click();
-    await page.waitForSelector('a:has-text("Settings")', { state: 'visible' });
     await page.getByRole('link', { name: 'Settings' }).nth(0).click();
-    await page.waitForSelector('a:has-text("My Account")', { state: 'visible' });
     await page.getByRole('link', { name: 'My Account' }).click();
 
-    console.log('Retrieving account details...');
-    await page.waitForSelector('.col-auto > .avatar', { state: 'visible' });
-    await page.locator('.col-auto > .avatar').isVisible();
+    await page.getByRole('heading', { name: 'Account Details' }).click();
+    await page.locator('.col-auto > .avatar').click();
 
     const emailLabel = await page.getByText('Your email can be used to log in to your account.');
     const userEmail = await emailLabel.evaluate(node => node.nextElementSibling.querySelector('div:nth-child(6) > div > .col-auto').innerText.trim());
@@ -89,14 +68,14 @@ test.describe.serial('TPay V3 - User Profile', () => {
   });
 
   test('Merchant Details Tab', async () => {
-    test.setTimeout(60000); // Increase timeout to 60 seconds
-
-    console.log('Navigating to Merchant Details tab...');
+    await login(page); // Log in before each test
     await page.getByLabel('Open user menu').click();
-    await page.waitForSelector('a:has-text("Settings")', { state: 'visible' });
     await page.getByRole('link', { name: 'Settings' }).nth(0).click();
-    await page.waitForSelector('a:has-text("Merchant Details")', { state: 'visible' });
     await page.getByRole('link', { name: 'Merchant Details' }).click();
+    await page.getByRole('heading', { name: 'Merchant Details' }).click();
+
+    // Retrieve and console log the user's merchant details
+    console.log('Retrieving merchant details...');
 
     const businessNameLabel = await page.getByText('Business Name:');
     const businessName = await businessNameLabel.evaluate(node => node.nextElementSibling.textContent.trim());
@@ -136,17 +115,16 @@ test.describe.serial('TPay V3 - User Profile', () => {
   });
 
   test('Bank Accounts Tab', async () => {
-    test.setTimeout(60000); // Increase timeout to 60 seconds
-
-    console.log('Navigating to Bank Accounts tab...');
+    await login(page); // Log in before each test
     await page.getByLabel('Open user menu').click();
-    await page.waitForSelector('a:has-text("Settings")', { state: 'visible' });
     await page.getByRole('link', { name: 'Settings' }).nth(0).click();
-    await page.waitForSelector('a:has-text("Bank Accounts")', { state: 'visible' });
     await page.getByRole('link', { name: 'Bank Accounts' }).click();
+    await page.getByRole('heading', { name: 'Linked Bank Accounts' }).click();
 
+    // Locate all "col-lg-6" containers (each container represents a bank account)
     const accountContainers = await page.locator('.col-lg-6').elementHandles();
 
+    // Iterate over each bank account container, with a maximum of 5 accounts
     for (let i = 0; i < accountContainers.length && i < 10; i++) {
       const container = accountContainers[i];
 
@@ -182,4 +160,4 @@ test.describe.serial('TPay V3 - User Profile', () => {
       }
     }
   });
-}); 
+});

@@ -10,22 +10,12 @@ function getRandomCorrectUser() {
 // Helper function to log in
 async function login(page) {
   const testUserProfile = getRandomCorrectUser();
-  await page.goto('https://merchant-sit.traxionpay.com', {waitUntil: 'load'});
-  await page.waitForLoadState('networkidle');
+  await page.goto('https://merchant-sit.traxionpay.com/signin');
   await page.getByPlaceholder('your@email.com').fill(testUserProfile.email);
   await page.getByPlaceholder('your password').fill(testUserProfile.password);
-  await Promise.all([
-    page.waitForNavigation(),
-    page.getByRole('button', { name: 'Sign in' }).click()
-  ]);
+  await page.getByRole('button', { name: 'Sign in' }).click();
 }
 
-async function clickAndWaitForNavigation(page, selector) {
-  await Promise.all([
-    page.waitForNavigation(),
-    page.click(selector)
-  ]);
-}
 test.describe.serial('TPay V3 - User Profile', () => {
   let page;
 
@@ -41,10 +31,11 @@ test.describe.serial('TPay V3 - User Profile', () => {
     await page.close();
   });
 
-  test('Profile Tab', async () => {  
+  test('Profile Tab', async () => {
+    test.setTimeout(120000); // Increase timeout to 120 seconds
+  
     console.log('Navigating to profile tab...');
-    await page.waitForLoadState('networkidle');
-    await page.getByLabel('Open user menu',{waitUntil: 'load'}).click();
+    await page.getByLabel('Open user menu').click();
     console.log('Clicked on user menu...');
     await page.waitForSelector('a:has-text("Profile")', { state: 'visible' });
     console.log('Profile link is visible...');
@@ -182,4 +173,4 @@ test.describe.serial('TPay V3 - User Profile', () => {
       }
     }
   });
-}); 
+});

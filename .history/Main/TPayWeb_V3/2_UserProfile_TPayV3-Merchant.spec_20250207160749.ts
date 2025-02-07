@@ -10,8 +10,7 @@ function getRandomCorrectUser() {
 // Helper function to log in
 async function login(page) {
   const testUserProfile = getRandomCorrectUser();
-  await page.goto('https://merchant-sit.traxionpay.com', {waitUntil: 'load'});
-  await page.waitForLoadState('networkidle');
+  await page.goto('https://merchant-sit.traxionpay.com');
   await page.getByPlaceholder('your@email.com').fill(testUserProfile.email);
   await page.getByPlaceholder('your password').fill(testUserProfile.password);
   await Promise.all([
@@ -43,8 +42,7 @@ test.describe.serial('TPay V3 - User Profile', () => {
 
   test('Profile Tab', async () => {  
     console.log('Navigating to profile tab...');
-    await page.waitForLoadState('networkidle');
-    await page.getByLabel('Open user menu',{waitUntil: 'load'}).click();
+    await page.getByLabel('Open user menu').click();
     console.log('Clicked on user menu...');
     await page.waitForSelector('a:has-text("Profile")', { state: 'visible' });
     console.log('Profile link is visible...');
@@ -182,4 +180,4 @@ test.describe.serial('TPay V3 - User Profile', () => {
       }
     }
   });
-}); 
+});

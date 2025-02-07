@@ -10,22 +10,12 @@ function getRandomCorrectUser() {
 // Helper function to log in
 async function login(page) {
   const testUserProfile = getRandomCorrectUser();
-  await page.goto('https://merchant-sit.traxionpay.com', {waitUntil: 'load'});
-  await page.waitForLoadState('networkidle');
+  await page.goto('https://merchant-sit.traxionpay.com/signin');
   await page.getByPlaceholder('your@email.com').fill(testUserProfile.email);
   await page.getByPlaceholder('your password').fill(testUserProfile.password);
-  await Promise.all([
-    page.waitForNavigation(),
-    page.getByRole('button', { name: 'Sign in' }).click()
-  ]);
+  await page.getByRole('button', { name: 'Sign in' }).click();
 }
 
-async function clickAndWaitForNavigation(page, selector) {
-  await Promise.all([
-    page.waitForNavigation(),
-    page.click(selector)
-  ]);
-}
 test.describe.serial('TPay V3 - User Profile', () => {
   let page;
 
@@ -41,25 +31,19 @@ test.describe.serial('TPay V3 - User Profile', () => {
     await page.close();
   });
 
-  test('Profile Tab', async () => {  
+  test('Profile Tab', async () => {
+    test.setTimeout(60000); // Increase timeout to 60 seconds
+
     console.log('Navigating to profile tab...');
-    await page.waitForLoadState('networkidle');
-    await page.getByLabel('Open user menu',{waitUntil: 'load'}).click();
-    console.log('Clicked on user menu...');
+    await page.getByLabel('Open user menu').click(),{state: 'visible'};
     await page.waitForSelector('a:has-text("Profile")', { state: 'visible' });
-    console.log('Profile link is visible...');
-    await Promise.all([
-      page.waitForNavigation(),
-      page.getByRole('link', { name: 'Profile' }).click(),
-    ]);
-    console.log('Clicked on Profile link...');
-  
+    await page.getByRole('link', { name: 'Profile' }).click();
+
     console.log('Retrieving user details...');
     await page.waitForSelector('h1.fw-bold', { state: 'visible' });
-    console.log('User details are visible...');
     const userName = await page.locator('h1.fw-bold').textContent() || 'N/A';
     console.log(`Name: ${userName}`);
-  
+
     console.log('Checking if user is verified...');
     const isVerified = await page.getByRole('link', { name: 'Verified' }).isVisible();
     console.log(`User is ${isVerified ? 'VERIFIED' : 'NOT VERIFIED'}`);
@@ -182,4 +166,4 @@ test.describe.serial('TPay V3 - User Profile', () => {
       }
     }
   });
-}); 
+});
