@@ -158,12 +158,3 @@ test.describe('TPay V3 - User Profile', () => {
     }
   });
 });
-
-/*
-getByText('Account Name: Vincent Salanga').first()
-getByText('Account Name: Vincent Salanga').nth(1)
-getByText('Account Name: Vincent Salanga').nth(2)
-
-
-getByText('Account Type: Checking').first()
-getByText('Account Type: Checking').nth(1)*/
