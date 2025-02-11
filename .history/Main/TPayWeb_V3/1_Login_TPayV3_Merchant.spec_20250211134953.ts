@@ -140,11 +140,10 @@ test.skip('Show Password & Remember Me Functionality', async ({ page }) => {
   await expect(page.getByPlaceholder('your password')).toHaveValue(correctUser.password);
   // Verify that the "Remember me" checkbox is checked
   await expect(page.getByLabel('Remember me on this device')).toBeChecked();
-
 });
 
 
-test.skip('Forgot Password', async ({ page }) => {
+test('Forgot Password', async ({ page }) => {
 
   const correctUser = getRandomCorrectUser();
   
@@ -163,4 +162,6 @@ test.skip('Forgot Password', async ({ page }) => {
     page.getByRole('button', { name: 'Send Link' }).click()
   ]);
   expect(response.status()).toBe(200);
+
+
 });

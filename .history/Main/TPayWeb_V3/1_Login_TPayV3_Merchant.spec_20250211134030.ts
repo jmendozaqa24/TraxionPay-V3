@@ -140,27 +140,16 @@ test.skip('Show Password & Remember Me Functionality', async ({ page }) => {
   await expect(page.getByPlaceholder('your password')).toHaveValue(correctUser.password);
   // Verify that the "Remember me" checkbox is checked
   await expect(page.getByLabel('Remember me on this device')).toBeChecked();
-
 });
 
 
 test.skip('Forgot Password', async ({ page }) => {
 
   const correctUser = getRandomCorrectUser();
-  
   await page.goto('https://merchant-sit.traxionpay.com/signin');
   await page.getByRole('link', { name: 'Forgot Password?' }).click();
-  
-  //verify test if visible
-  await page.getByRole('heading', { name: 'Forgot Password' }).isVisible();
-  await page.getByRole('textbox', { name: 'Email Address' }).isVisible();
+  await page.getByRole('heading', { name: 'Forgot Password' }).click();
+  await page.getByRole('textbox', { name: 'Email Address' }).fill(correctUser.email);
   await page.getByRole('button', { name: 'Send Link' }).click();
 
-  //verification test the email reset is succesful
-  await page.getByRole('textbox', { name: 'Email Address' }).fill(correctUser.email); 
-  const [response] = await Promise.all([
-    page.waitForResponse(response => response.url().includes('https://merchant-sit.traxionpay.com/') && response.status() === 200),
-    page.getByRole('button', { name: 'Send Link' }).click()
-  ]);
-  expect(response.status()).toBe(200);
 });

@@ -43,53 +43,66 @@ test.afterEach(async ({ page }) => {
   });
 });
 
-test.describe('Login', () => {
-  test('Valid Login', async ({ page }) => {
-    const correctUser = getRandomCorrectUser();
 
-    await page.route('https://merchant-sit.traxionpay.com/', route => {
-      route.fulfill({
-        status: 200,
-        contentType: 'application/json',
-        body: JSON.stringify({ success: true })
-      });
+test('Valid Login', async ({ page }) => {
+  const correctUser = getRandomCorrectUser();
+
+  await page.route('https://merchant-sit.traxionpay.com/', route => {
+    route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: JSON.stringify({ success: true })
     });
-
-    await page.goto('https://merchant-sit.traxionpay.com/signin');
-
-    await page.getByPlaceholder('your@email.com').fill(correctUser.email);
-    await page.getByPlaceholder('your password').fill(correctUser.password);
-
-    // Add on this part the API validation
-    const [response] = await Promise.all([
-      page.waitForResponse(response => response.url().includes('https://merchant-sit.traxionpay.com/') && response.status() === 200),
-      page.getByRole('button', { name: 'Sign in' }).click()
-    ]);
-    expect(response.status()).toBe(200);
-
-    // Verification
-    await expect(page).toHaveURL('https://merchant-sit.traxionpay.com');
-    await expect(page.getByText('Overview')).toBeVisible();
-    await expect(page.getByRole('heading', { name: 'Dashboard' })).toBeVisible();
   });
 
-  test('Invalid Login', async ({ page }) => {
-    const incorrectUser = getRandomIncorrectUser();
-    const randomPassword = getRandomPassword();
+  await page.goto('https://merchant-sit.traxionpay.com/signin');
 
-    await page.goto('https://merchant-sit.traxionpay.com/signin');
+  await page.getByPlaceholder('your@email.com').fill(correctUser.email);
+  await page.getByPlaceholder('your password').fill(correctUser.password);
 
-    await page.getByPlaceholder('your@email.com').fill(incorrectUser.email);
-    await page.getByPlaceholder('your password').fill(randomPassword);
-    await page.getByRole('button', { name: 'Sign in' }).click()
+  // Add on this part the API validation
+  const [response] = await Promise.all([
+    page.waitForResponse(response => response.url().includes('https://merchant-sit.traxionpay.com/') && response.status() === 200),
+    page.getByRole('button', { name: 'Sign in' }).click()
+  ]);
+  expect(response.status()).toBe(200);
 
-    // Add assertions to verify login failure
-    if (randomPassword.length < 8) {
-      await expect(page.getByText('Missing or invalid input. Try again.')).toBeVisible();
-    } else {
-      await expect(page.getByText('Authentication error. Incorrect username and password combination ')).toBeVisible();
-    }
-  });
+  // Verification
+  await expect(page).toHaveURL('https://merchant-sit.traxionpay.com');
+  await expect(page.getByText('Overview')).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Dashboard' })).toBeVisible();
+});
+
+test('Invalid Login', async ({ page }) => {
+  const incorrectUser = getRandomIncorrectUser();
+  const randomPassword = getRandomPassword();
+
+  //await page.route('**/api/signin', route => {
+  //  route.fulfill({
+  //    status: 400,
+  //    contentType: 'application/json',
+  //    body: JSON.stringify({ success: false })
+  //  });
+  //});
+
+  await page.goto('https://merchant-sit.traxionpay.com/signin');
+
+  await page.getByPlaceholder('your@email.com').fill(incorrectUser.email);
+  await page.getByPlaceholder('your password').fill(randomPassword);
+  await page.getByRole('button', { name: 'Sign in' }).click()
+  // Add on this part the API validation
+  //const [response] = await Promise.all([
+  //  page.waitForResponse(response => response.url().includes('/api/signin') && [400, 404].includes(response.status())),
+  //  page.getByRole('button', { name: 'Sign in' }).click()
+  //]);
+  //expect([400, 404]).toContain(response.status());
+
+  // Add assertions to verify login failure
+  if (randomPassword.length < 8) {
+    await expect(page.getByText('Missing or invalid input. Try again.')).toBeVisible();
+  } else {
+    await expect(page.getByText('Authentication error. Incorrect username and password combination ')).toBeVisible();
+  }
 });
 
 test('Sign Up', async ({ page }) => {
@@ -108,7 +121,7 @@ test('Sign Up', async ({ page }) => {
 });
 
 
-test.skip('Show Password & Remember Me Functionality', async ({ page }) => {
+test('Show Password & Remember Me Functionality', async ({ page }) => {
   const correctUser = getRandomCorrectUser();
 
   await page.goto('https://merchant-sit.traxionpay.com/signin');
@@ -140,27 +153,4 @@ test.skip('Show Password & Remember Me Functionality', async ({ page }) => {
   await expect(page.getByPlaceholder('your password')).toHaveValue(correctUser.password);
   // Verify that the "Remember me" checkbox is checked
   await expect(page.getByLabel('Remember me on this device')).toBeChecked();
-
-});
-
-
-test.skip('Forgot Password', async ({ page }) => {
-
-  const correctUser = getRandomCorrectUser();
-  
-  await page.goto('https://merchant-sit.traxionpay.com/signin');
-  await page.getByRole('link', { name: 'Forgot Password?' }).click();
-  
-  //verify test if visible
-  await page.getByRole('heading', { name: 'Forgot Password' }).isVisible();
-  await page.getByRole('textbox', { name: 'Email Address' }).isVisible();
-  await page.getByRole('button', { name: 'Send Link' }).click();
-
-  //verification test the email reset is succesful
-  await page.getByRole('textbox', { name: 'Email Address' }).fill(correctUser.email); 
-  const [response] = await Promise.all([
-    page.waitForResponse(response => response.url().includes('https://merchant-sit.traxionpay.com/') && response.status() === 200),
-    page.getByRole('button', { name: 'Send Link' }).click()
-  ]);
-  expect(response.status()).toBe(200);
 });

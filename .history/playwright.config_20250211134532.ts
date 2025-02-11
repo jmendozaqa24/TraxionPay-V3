@@ -36,11 +36,10 @@ export default defineConfig({
   globalSetup: './global-setup.ts',
    /* Configure projects for major browsers */
    projects: [
-
     {
-      name: 'Chrome',
+      name: 'chromium',
       use: { 
-        viewport: null,
+        viewport: { width: 1920, height: 1080 },
         launchOptions:{
           slowMo:100,
         },
@@ -48,9 +47,9 @@ export default defineConfig({
     },
 
     {
-      name: 'chromium',
+      name: 'Chrome',
       use: { 
-        viewport: { width: 1920, height: 1080 },
+        viewport: null,
         launchOptions:{
           slowMo:100,
         },

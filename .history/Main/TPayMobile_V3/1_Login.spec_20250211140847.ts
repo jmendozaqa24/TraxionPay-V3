@@ -36,6 +36,7 @@ test.describe.parallel('Mobile - Login Page', () => {
 
             await page.getByRole('button', { name: 'Login' }).click();
 
+            await page.locator('text=Dashboard').isVisible();
 
         });
     });

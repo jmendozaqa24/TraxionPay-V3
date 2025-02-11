@@ -35,50 +35,49 @@ test.beforeEach(async () => {
 test.describe('Dashboard - User Details', () => {
   test('User Details Visibility and Retrieval', async () => {
     // Check visibility of the account link and retrieve its value
+    console.log('Checking visibility of the account link...');
     const accountLink = await page.getByRole('link', { name: /Account:/ });
     await expect(accountLink).toBeVisible();
     const accountLinkText = await accountLink.textContent();
-    const accountNumber = accountLinkText.replace('Account: ', '').trim();
-    console.log(`Account Number: ${accountNumber}`);
- 
+    console.log(`Account Number: Visible\nAccount: ${accountLinkText.trim()}`);
 
     // Check visibility of the current currency link and retrieve its value
+    console.log('Checking visibility of the current currency link...');
     const currentCurrencyLink = await page.getByRole('link', { name: /Current:/ });
     await expect(currentCurrencyLink).toBeVisible();
     const currentCurrencyText = await currentCurrencyLink.textContent();
-    const currentCurrency = currentCurrencyText.replace('Current: ', '').trim();
-    console.log(`Current Currency: Visible\nCurrent: ${currentCurrency}`);
-    
+    console.log(`Current Currency: Visible\nCurrent: ${currentCurrencyText.trim()}`);
 
     // Check visibility of the available currency link and retrieve its value
+    console.log('Checking visibility of the available currency link...');
     const availableCurrencyLink = await page.getByRole('link', { name: /Available:/ });
     await expect(availableCurrencyLink).toBeVisible();
     const availableCurrencyText = await availableCurrencyLink.textContent();
-    const availableCurrency = availableCurrencyText.replace('Available: ', '').trim();
-    console.log(`Available Currency: Visible\nAvailable: ${availableCurrency}`);
-
+    console.log(`Available Currency: Visible\nAvailable: ${availableCurrencyText.trim()}`);
 
     // Check visibility of the heading and retrieve its value
+    console.log('Checking visibility of the heading...');
     const heading = await page.getByRole('heading', { name: /[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}/ });
     await expect(heading).toBeVisible();
     const headingText = await heading.textContent();
     console.log(`Heading: Visible\nHeading: ${headingText.trim()}`);
-   
 
     // Check visibility of the email link and retrieve its value
+    console.log('Checking visibility of the email link...');
     const emailLink = await page.getByRole('link', { name: /@traxiontech.net/ });
     await expect(emailLink).toBeVisible();
     const emailText = await emailLink.textContent();
     console.log(`Email: Visible\nEmail: ${emailText.trim()}`);
-   
 
     // Check visibility of the QR code image and retrieve its alt text
+    console.log('Checking visibility of the QR code image...');
     const qrCodeImage = await page.getByRole('img', { name: /QR Code/ });
     await expect(qrCodeImage).toBeVisible();
     const qrCodeAltText = await qrCodeImage.getAttribute('alt');
     console.log(`QR Code Image: Visible\nQR Code: ${qrCodeAltText}`);   
 
     // Check visibility of the phone number and retrieve its value
+    console.log('Checking visibility of the phone number...');
     const phoneNumber = await page.getByText(/\+63[0-9]{10}/);
     await expect(phoneNumber).toBeVisible();
     const phoneNumberText = await phoneNumber.textContent();
@@ -120,6 +119,24 @@ test.describe('Dashboard - Analytics', () => {
     }
 
     console.log(`Total PayOuts: Visible\nTotal PayOuts: ${totalPayOutsText.trim()}`);
+
+    /*
+    console.log('Checking visibility of the total Clients value...');
+    const totalClients = await page.locator('/^0$/');
+    await expect(totalClients).toBeVisible();
+
+    // Retry mechanism to wait for the value to be updated
+    let totalClientsText = '';
+    for (let i = 0; i < 10; i++) { // Retry up to 10 times
+      totalClientsText = await totalClients.textContent();
+      if (totalClientsText.trim() !== '0.00') {
+        break;
+      }
+      await page.waitForTimeout(1000); // Wait for 1 second before retrying
+    }
+
+    console.log(`Total Clients: Visible\nTotal clients: ${totalClientsText.trim()}`);
+*/
   });
   //still fixing
   test.skip('Transaction Chart Visibility and Retrieval', async () => {

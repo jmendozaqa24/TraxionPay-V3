@@ -36,11 +36,8 @@ test.describe.parallel('Mobile - Login Page', () => {
 
             await page.getByRole('button', { name: 'Login' }).click();
 
-
         });
     });
-
-    
 });
 
 

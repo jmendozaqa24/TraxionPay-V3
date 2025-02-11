@@ -46,7 +46,7 @@ export default defineConfig({
         },
       },
     },
-
+    
     {
       name: 'chromium',
       use: { 
@@ -56,6 +56,8 @@ export default defineConfig({
         },
       },
     },
+
+   
 
     {
       name: 'firefox',

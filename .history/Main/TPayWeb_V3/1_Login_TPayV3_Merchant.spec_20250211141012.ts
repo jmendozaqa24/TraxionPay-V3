@@ -141,10 +141,11 @@ test.skip('Show Password & Remember Me Functionality', async ({ page }) => {
   // Verify that the "Remember me" checkbox is checked
   await expect(page.getByLabel('Remember me on this device')).toBeChecked();
 
+  await page.locator('button=Sign In').isVisible();
 });
 
 
-test.skip('Forgot Password', async ({ page }) => {
+test('Forgot Password', async ({ page }) => {
 
   const correctUser = getRandomCorrectUser();
   

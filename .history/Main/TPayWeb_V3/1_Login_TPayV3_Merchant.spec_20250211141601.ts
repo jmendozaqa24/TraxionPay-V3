@@ -144,7 +144,7 @@ test.skip('Show Password & Remember Me Functionality', async ({ page }) => {
 });
 
 
-test.skip('Forgot Password', async ({ page }) => {
+test('Forgot Password', async ({ page }) => {
 
   const correctUser = getRandomCorrectUser();
   

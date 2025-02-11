@@ -144,7 +144,7 @@ test.skip('Show Password & Remember Me Functionality', async ({ page }) => {
 });
 
 
-test.skip('Forgot Password', async ({ page }) => {
+test('Forgot Password', async ({ page }) => {
 
   const correctUser = getRandomCorrectUser();
   
@@ -164,3 +164,9 @@ test.skip('Forgot Password', async ({ page }) => {
   ]);
   expect(response.status()).toBe(200);
 });
+
+
+
+test('locator', async ({ page }) => {
+  await page.locator('button=login').isVisible();
+}); 
