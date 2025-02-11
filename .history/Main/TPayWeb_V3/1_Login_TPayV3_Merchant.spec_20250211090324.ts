@@ -30,7 +30,7 @@ function getRandomSignUpUser() {
   return signUpUsers[randomIndex];
 }
 
-test.afterEach(async ({ page }) => {
+test.beforeEach(async ({ page }) => {
   // Add a hook to take a screenshot on failure
   test.step('Take screenshot on failure', async () => {
     const screenshotPath = `screenshots/${test.info().title}.png`;
@@ -43,6 +43,13 @@ test.afterEach(async ({ page }) => {
   });
 });
 
+test.afterEach(async ({ page }, testInfo) => {
+  if (testInfo.status === 'failed') {
+    const screenshotPath = `screenshots/${testInfo.title}.png`;
+    await page.screenshot({ path: screenshotPath, fullPage: true });
+    allure.attachment('Screenshot', screenshotPath, 'image/png');
+  }
+});
 
 test('Valid Login', async ({ page }) => {
   const correctUser = getRandomCorrectUser();

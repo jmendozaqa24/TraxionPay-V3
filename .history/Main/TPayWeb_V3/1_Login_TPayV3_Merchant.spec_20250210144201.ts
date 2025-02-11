@@ -30,19 +30,16 @@ function getRandomSignUpUser() {
   return signUpUsers[randomIndex];
 }
 
-test.afterEach(async ({ page }) => {
+test.describe.configure({ mode: 'serial' });
+
+test.beforeEach(async ({ page }) => {
   // Add a hook to take a screenshot on failure
-  test.step('Take screenshot on failure', async () => {
+  test.info().on('test:fail', async () => {
     const screenshotPath = `screenshots/${test.info().title}.png`;
     await page.screenshot({ path: screenshotPath, fullPage: true });
-    test.info().attachments.push({
-      name: 'Screenshot',
-      path: screenshotPath,
-      contentType: 'image/png'
-    });
+    allure.attachment('Screenshot', screenshotPath, 'image/png');
   });
 });
-
 
 test('Valid Login', async ({ page }) => {
   const correctUser = getRandomCorrectUser();

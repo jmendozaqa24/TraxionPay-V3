@@ -32,7 +32,6 @@ export default defineConfig({
     screenshot: 'only-on-failure',
     trace: 'on-first-retry',
   },
-
   globalSetup: './global-setup.ts',
    /* Configure projects for major browsers */
    projects: [
