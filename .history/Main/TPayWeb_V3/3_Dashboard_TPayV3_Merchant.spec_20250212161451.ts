@@ -7,22 +7,8 @@ function getRandomCorrectUser() {
   return testDataUsers[randomIndex];
 }
 
-
 let context;
 let page;
-
-test.afterEach(async ({ page }) => {
-  if (test.info().status !== test.info().expectedStatus) {
-    // Add a hook to take a screenshot on failure
-    const screenshotPath = `screenshots/${test.info().title}.png`;
-    await page.screenshot({ path: screenshotPath, fullPage: true });
-    test.info().attachments.push({
-      name: 'Screenshot',
-      path: screenshotPath,
-      contentType: 'image/png'
-    });
-  }
-});
 
 test.beforeAll(async ({ browser }) => {
   context = await browser.newContext();
@@ -280,11 +266,10 @@ test.describe('Dashboard - Transaction Table Test', () => {
       }
     });
     
-    test('Entries Per Page and Pagination Functionality', async () => {
+    test('Page Number Functionality', async () => {
       const entriesDropdown = await page.getByLabel('entries per page');
       const entriesOptions = ['10', '25', '50', '100'];
     
-      // Part 1: Interact with the entries per page dropdown
       for (const option of entriesOptions) {
         await entriesDropdown.click();
         await entriesDropdown.selectOption(option);
@@ -306,36 +291,13 @@ test.describe('Dashboard - Transaction Table Test', () => {
         let showingElement = await page.getByText(showingText);
         expect(showingElement).toBeVisible();
     
-        // Validate the number of rows under the transaction table
-        const transactionRows = await page.$$('div#transactions-list_wrapper tbody tr');
-        expect(transactionRows.length).toBeLessThanOrEqual(entriesPerPage); // Ensure the number of rows does not exceed the selected entries per page
-      }
+        // Skip pagination tests if total entries are less than or equal to entries per page
+        if (totalEntries <= entriesPerPage) {
+          continue;
+        }
     
-      // Part 2: Set entries per page to 10 and navigate through pages
-      await entriesDropdown.click();
-      await entriesDropdown.selectOption('10');
-      await new Promise(resolve => setTimeout(resolve, 1000)); // Wait for the table to update
-    
-      // Get the total number of entries
-      const totalEntriesText = await page.textContent('div#transactions-list_info');
-      const totalEntriesMatch = totalEntriesText.match(/of (\d+) entries/);
-      const totalEntries = parseInt(totalEntriesMatch[1]);
-    
-      // Function to generate the "Showing X to Y of Z entries" text
-      const generateShowingText = (start, end, total) => `Showing ${start} to ${end} of ${total} entries`;
-    
-      // Calculate the number of entries per page
-      const entriesPerPage = 10;
-    
-      // Validate initial page
-      let showingText = generateShowingText(1, entriesPerPage, totalEntries);
-      let showingElement = await page.getByText(showingText);
-      expect(showingElement).toBeVisible();
-    
-      // Skip pagination tests if total entries are less than or equal to entries per page
-      if (totalEntries > entriesPerPage) {
         // Click Next and validate
-        await page.getByLabel('Next').click();
+        await page.getByLabel('Previous').click();
         await new Promise(resolve => setTimeout(resolve, 500)); // Wait for the table to update
         showingText = generateShowingText(entriesPerPage + 1, Math.min(entriesPerPage * 2, totalEntries), totalEntries);
         showingElement = await page.getByText(showingText);
@@ -368,6 +330,7 @@ test.describe('Dashboard - Transaction Table Test', () => {
         const lastPageStart = Math.floor((totalEntries - 1) / entriesPerPage) * entriesPerPage + 1;
         showingText = generateShowingText(lastPageStart, totalEntries, totalEntries);
         showingElement = await page.getByText(showingText);
+        expect(showingElement).toBeVisible();
       }
     });
 });

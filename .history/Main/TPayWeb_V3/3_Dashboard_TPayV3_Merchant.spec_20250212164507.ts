@@ -7,22 +7,8 @@ function getRandomCorrectUser() {
   return testDataUsers[randomIndex];
 }
 
-
 let context;
 let page;
-
-test.afterEach(async ({ page }) => {
-  if (test.info().status !== test.info().expectedStatus) {
-    // Add a hook to take a screenshot on failure
-    const screenshotPath = `screenshots/${test.info().title}.png`;
-    await page.screenshot({ path: screenshotPath, fullPage: true });
-    test.info().attachments.push({
-      name: 'Screenshot',
-      path: screenshotPath,
-      contentType: 'image/png'
-    });
-  }
-});
 
 test.beforeAll(async ({ browser }) => {
   context = await browser.newContext();

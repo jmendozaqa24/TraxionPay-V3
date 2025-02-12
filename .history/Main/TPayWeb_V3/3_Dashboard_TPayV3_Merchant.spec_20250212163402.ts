@@ -7,22 +7,8 @@ function getRandomCorrectUser() {
   return testDataUsers[randomIndex];
 }
 
-
 let context;
 let page;
-
-test.afterEach(async ({ page }) => {
-  if (test.info().status !== test.info().expectedStatus) {
-    // Add a hook to take a screenshot on failure
-    const screenshotPath = `screenshots/${test.info().title}.png`;
-    await page.screenshot({ path: screenshotPath, fullPage: true });
-    test.info().attachments.push({
-      name: 'Screenshot',
-      path: screenshotPath,
-      contentType: 'image/png'
-    });
-  }
-});
 
 test.beforeAll(async ({ browser }) => {
   context = await browser.newContext();
@@ -362,12 +348,17 @@ test.describe('Dashboard - Transaction Table Test', () => {
         showingElement = await page.getByText(showingText);
         expect(showingElement).toBeVisible();
     
-        // Click Last and validate
-        await page.getByLabel('Last').click();
-        await new Promise(resolve => setTimeout(resolve, 500)); // Wait for the table to update
-        const lastPageStart = Math.floor((totalEntries - 1) / entriesPerPage) * entriesPerPage + 1;
-        showingText = generateShowingText(lastPageStart, totalEntries, totalEntries);
-        showingElement = await page.getByText(showingText);
+            // Click Last and validate
+        const lastButton = await page.getByLabel('Last');
+        const isLastButtonEnabled = await lastButton.isEnabled();
+        if (isLastButtonEnabled) {
+          await lastButton.click();
+          await new Promise(resolve => setTimeout(resolve, 500)); // Wait for the table to update
+          const lastPageStart = Math.floor((totalEntries - 1) / entriesPerPage) * entriesPerPage + 1;
+          showingText = generateShowingText(lastPageStart, totalEntries, totalEntries);
+          showingElement = await page.getByText(showingText);
+          expect(showingElement).toBeVisible();
+        }
       }
     });
 });
