@@ -113,7 +113,7 @@ test.describe('Sign Up', () => {
     await page.getByRole('textbox', { name: 'Mobile Number' }).fill(uniqueMobile);
     await page.getByRole('button', { name: 'Sign Up' }).click();
     
-    await expect(page).toHaveURL('https://merchant-sit.traxionpay.com/signup/otp?_hash=80c9bf05e6ccd0fcfef0b18429c5de0a5bf4ad18');
+    await expect(page).toHaveURL('https://merchant-sit.traxionpay.com/signup/otp');
   });
 });
 

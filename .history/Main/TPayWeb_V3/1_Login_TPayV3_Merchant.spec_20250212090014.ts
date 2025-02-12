@@ -1,7 +1,6 @@
 import { test, expect } from '@playwright/test';
 import userDetails from './userDetails.json'; 
 import { allure } from 'allure-playwright';
-import exp from 'constants';
 
 
 function getRandomCorrectUser() {
@@ -35,9 +34,15 @@ function getRandomPassword() {
   return passwords[randomIndex];
 }
 
+function getRandomSignUpUser() {
+  const signUpUsers = userDetails.signUpUsers;
+  const randomIndex = Math.floor(Math.random() * signUpUsers.length);
+  return signUpUsers[randomIndex];
+}
+
 test.afterEach(async ({ page }) => {
-  if (test.info().status !== test.info().expectedStatus) {
-    // Add a hook to take a screenshot on failure
+  // Add a hook to take a screenshot on failure
+  test.step('Take screenshot on failure', async () => {
     const screenshotPath = `screenshots/${test.info().title}.png`;
     await page.screenshot({ path: screenshotPath, fullPage: true });
     test.info().attachments.push({
@@ -45,7 +50,7 @@ test.afterEach(async ({ page }) => {
       path: screenshotPath,
       contentType: 'image/png'
     });
-  }
+  });
 });
 
 test.describe('Login', () => {
@@ -113,7 +118,8 @@ test.describe('Sign Up', () => {
     await page.getByRole('textbox', { name: 'Mobile Number' }).fill(uniqueMobile);
     await page.getByRole('button', { name: 'Sign Up' }).click();
     
-    await expect(page).toHaveURL('https://merchant-sit.traxionpay.com/signup/otp?_hash=80c9bf05e6ccd0fcfef0b18429c5de0a5bf4ad18');
+    await expect(page).toHaveTitle('OTP');
+    
   });
 });
 

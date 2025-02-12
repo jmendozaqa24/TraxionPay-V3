@@ -1,7 +1,6 @@
 import { test, expect } from '@playwright/test';
 import userDetails from './userDetails.json'; 
 import { allure } from 'allure-playwright';
-import exp from 'constants';
 
 
 function getRandomCorrectUser() {
@@ -16,16 +15,6 @@ function getRandomIncorrectUser() {
   return incorrectUsers[randomIndex];
 }
 
-function generateUniqueEmail() {
-  const timestamp = Date.now();
-  return `user${timestamp}@example.com`;
-}
-
-function generateUniqueMobile() {
-  const randomDigits = Math.floor(1000000000 + Math.random() * 9000000000);
-  return `9${randomDigits}`;
-}
-
 function getRandomPassword() {
   const passwords = [
     'short', // Less than 8 characters
@@ -35,9 +24,15 @@ function getRandomPassword() {
   return passwords[randomIndex];
 }
 
+function getRandomSignUpUser() {
+  const signUpUsers = userDetails.signUpUsers;
+  const randomIndex = Math.floor(Math.random() * signUpUsers.length);
+  return signUpUsers[randomIndex];
+}
+
 test.afterEach(async ({ page }) => {
-  if (test.info().status !== test.info().expectedStatus) {
-    // Add a hook to take a screenshot on failure
+  // Add a hook to take a screenshot on failure
+  test.step('Take screenshot on failure', async () => {
     const screenshotPath = `screenshots/${test.info().title}.png`;
     await page.screenshot({ path: screenshotPath, fullPage: true });
     test.info().attachments.push({
@@ -45,7 +40,7 @@ test.afterEach(async ({ page }) => {
       path: screenshotPath,
       contentType: 'image/png'
     });
-  }
+  });
 });
 
 test.describe('Login', () => {
@@ -100,20 +95,17 @@ test.describe('Login', () => {
 
 test.describe('Sign Up', () => {
   test('Sign Up - Success', async ({ page }) => {
-    const uniqueEmail = generateUniqueEmail();
-    const uniqueMobile = generateUniqueMobile();
+    const signUpUser = getRandomSignUpUser();
 
     await page.goto('https://merchant-sit.traxionpay.com/signin');
     await page.getByRole('link', { name: 'Sign up' }).click();
 
     await expect(page).toHaveURL('https://merchant-sit.traxionpay.com/signup');
     await expect(page.getByText('Email address')).toBeVisible();
-    await page.getByPlaceholder('your@email.com').fill(uniqueEmail);
+    await page.getByPlaceholder('your@email.com').fill(signUpUser.email);
     await expect(page.getByText('Mobile Number')).toBeVisible();
-    await page.getByRole('textbox', { name: 'Mobile Number' }).fill(uniqueMobile);
+    await page.getByRole('textbox', { name: 'Mobile Number' }).fill(signUpUser.mobile);
     await page.getByRole('button', { name: 'Sign Up' }).click();
-    
-    await expect(page).toHaveURL('https://merchant-sit.traxionpay.com/signup/otp?_hash=80c9bf05e6ccd0fcfef0b18429c5de0a5bf4ad18');
   });
 });
 

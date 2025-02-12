@@ -34,5 +34,31 @@
     {
       "email": "incorrect2@example.com"
     }
+  ],
+  
+
+  
+
+  "signUpUsers": [
+    {
+      "email": "signup1@example.com",
+      "mobile": "9981791200"
+    },
+    {
+      "email": "signup2@example.com",
+      "mobile": "99817917400"
+    },
+    {
+      "email": "signup3@example.com",
+      "mobile": "9987654321"
+    },
+    {
+      "email": "signup4@example.com",
+      "mobile": "9981234567"
+    },
+    {
+      "email": "signup5@example.com",
+      "mobile": "9981791740"
+    }
   ]
 }
