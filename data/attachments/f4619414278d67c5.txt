@@ -1,0 +1,6 @@
+Checking visibility of the total PayIns value...
+Total PayIns: Visible
+Total PayIns: 123000
+Checking visibility of the total PayOuts value...
+Total PayOuts: Visible
+Total PayOuts: 500
