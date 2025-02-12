@@ -71,7 +71,7 @@ export default defineConfig({
 
     /* Test against mobile viewports. */
     {
-      name: 'mobile',
+      name: 'Mobile',
       use: {
         ...devices['Mobile Galaxy S8+'],
         viewport: { width: 400, height: 780 },
