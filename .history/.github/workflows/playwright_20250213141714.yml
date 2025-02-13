@@ -80,7 +80,7 @@ jobs:
                     </div>
                     <div style="text-align: center; margin: 5; padding: 0 40px;">
                         <p style="color: #555555; font-size: 16px; line-height: 1.6;">
-                            The Playwright tests for Traxion Pay V3 have completed. Please find the result at the following link:
+                            The Playwright tests for Traxion Pay V3 have completed. Please find the Allure report at the following link:
                         </p>
                         <a href="https://dread-vin.github.io/TraxionPay-V3/" 
                             style="display: inline-block; padding: 10px 20px; margin-top: 20px; font-size: 16px; color: #ffffff; background-color: #41C9E2; border-radius: 5px; text-decoration: none;">

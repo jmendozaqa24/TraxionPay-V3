@@ -57,7 +57,7 @@ export default defineConfig({
     },
 
     {
-      name: 'Firefox',
+      name: 'firefox',
       use: { 
         viewport: { width: 1920, height: 1080 },
         launchOptions:{
