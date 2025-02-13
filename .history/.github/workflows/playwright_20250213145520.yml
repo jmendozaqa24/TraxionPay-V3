@@ -78,7 +78,7 @@ jobs:
                     <div style="text-align: center; padding-bottom: 0">
                         <h1 style="color: #333333; margin: 5; padding: 10px;">Test Results Notification</h1>
                     </div>
-                    <div style="text-align: center; margin: 5; padding: 0 35px;">
+                    <div style="text-align: center; margin: 5; padding: 0 40px;">
                         <p style="color: #555555; font-size: 16px; line-height: 1.6;">
                             The Playwright tests for TraxionPay V3 have completed. Please find the Allure report at the following link:
                         </p>
