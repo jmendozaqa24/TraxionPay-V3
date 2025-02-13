@@ -24,12 +24,12 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
-      - name: Run TPay Web V3 Playwright Tests
+      - name: Run TPayWeb_V3 Playwright Tests
         if: always()
         run: | 
           npx playwright test Main/TPayWeb_V3 --project=chromium
 
-      - name: Run TPay Mobile V3 Playwright Tests
+      - name: Run TPayMobile_V3 Playwright Tests
         if: always()
         run: |
           npx playwright test Main/TPayMobile_V3 --project=mobile
@@ -84,7 +84,7 @@ jobs:
                         </p>
                         <a href="https://dread-vin.github.io/TraxionPay-V3/" 
                             style="display: inline-block; padding: 10px 20px; margin-top: 20px; font-size: 16px; color: #ffffff; background-color: #41C9E2; border-radius: 5px; text-decoration: none;">
-                            View Test Results
+                            View Test results
                         </a>
                     </div>
                     <div style="text-align: center; padding-top: 15px; font-size: 14px; color: #555555;">
