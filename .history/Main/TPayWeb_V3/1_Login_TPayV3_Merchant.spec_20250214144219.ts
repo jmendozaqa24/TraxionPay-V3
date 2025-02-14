@@ -82,7 +82,7 @@ test.describe('Login', () => {
     const incorrectUser = getRandomIncorrectUser();
     const randomPassword = getRandomPassword();
 
-    await page.goto('https://sit.traxionpay.com/signin');
+    await page.goto('https://merchant-sit.traxionpay.com/signin');
 
     await page.getByPlaceholder('your@email.com').fill(incorrectUser.email);
     await page.getByPlaceholder('your password').fill(randomPassword);
