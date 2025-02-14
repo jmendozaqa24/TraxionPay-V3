@@ -79,7 +79,7 @@ jobs:
                   <title>Test Results Notification</title>
                   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
               </head>
-              <body style="font-family: 'Poppins', Arial, sans-serif; background-color: #f4f4f4; margin: 5px 0; padding: 25px; border-radius: 8px;">
+              <body style="font-family: 'Poppins', Arial, sans-serif; background-color: #f4f4f4; margin: 5px 0; padding: 20px;">
                   <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
                       
                       <!-- Header -->
