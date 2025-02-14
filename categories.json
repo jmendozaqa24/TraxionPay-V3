@@ -1,0 +1,10 @@
+[
+    {
+      "name": "Failed tests",
+      "matchedStatuses": ["failed"]
+    },
+    {
+      "name": "Flaky tests",
+      "matchedStatuses": ["broken", "passed"]
+    }
+  ]

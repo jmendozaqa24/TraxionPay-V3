@@ -131,6 +131,7 @@ test.describe('Login', () => {
   });
 });
 
+
 test.describe('Sign Up', () => {
   test('Sign Up - Success', async ({ page }) => {
     const uniqueEmail = generateUniqueEmail();
