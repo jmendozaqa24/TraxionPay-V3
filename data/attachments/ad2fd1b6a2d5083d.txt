@@ -1,8 +1,8 @@
 Account Number: 1011-9079-9587-6228
 Current Currency: Visible
-Current: PHP 1,088,015.00
+Current: PHP 1,085,015.00
 Available Currency: Visible
-Available: PHP 1,085,911.00
+Available: PHP 1,082,911.00
 Heading: Visible
 Heading: 1011-9079-9587-6228
 Email: Visible
