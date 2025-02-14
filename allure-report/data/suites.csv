@@ -1,5 +1,0 @@
-"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
-"This test retrieves the current user information using the WhoAmI endpoint.","95","WhoAmI","Chrome","Thu Feb 13 08:58:48 PST 2025","passed","Thu Feb 13 08:58:48 PST 2025","API Testing - WhoAmI","TPayWeb_API_V3\Api_Auth_test.spec.ts","",""
-"This test logs in a user and stores the tokens in environment variables.","806","Login","Chrome","Thu Feb 13 08:58:47 PST 2025","passed","Thu Feb 13 08:58:48 PST 2025","API Testing - Login","TPayWeb_API_V3\Api_Auth_test.spec.ts","",""
-"This test runs the WhoAmI endpoint multiple times to calculate the average response time.","15087","WhoAmI multiple times","Chrome","Thu Feb 13 08:58:48 PST 2025","passed","Thu Feb 13 08:59:03 PST 2025","API Testing - WhoAmI","TPayWeb_API_V3\Api_Auth_test.spec.ts","",""
-"This test refreshes the tokens using the refresh token endpoint.","40","Refresh-Token","Chrome","Thu Feb 13 08:59:03 PST 2025","failed","Thu Feb 13 08:59:03 PST 2025","API Testing - Refresh Tokens","TPayWeb_API_V3\Api_Auth_test.spec.ts","",""
