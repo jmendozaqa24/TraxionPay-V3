@@ -53,12 +53,6 @@ jobs:
           keep_files: false
           publish_branch: gh-pages
 
-      - name: Wait for GitHub Pages to update
-        if: always()
-        run: |
-          echo "Waiting for GitHub Pages to update (5 minutes)..."
-          sleep 300    
-
       - name: Send email with test results
         if: always()
         uses: dawidd6/action-send-mail@v4
