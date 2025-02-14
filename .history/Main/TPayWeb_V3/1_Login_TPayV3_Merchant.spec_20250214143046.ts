@@ -100,7 +100,7 @@ test.describe('Login', () => {
   test.skip('Login - Show Password & Remember Me Functionality', async ({ page }) => {
     const correctUser = getRandomCorrectUser();
 
-    await page.goto('https://merchant-sit.pay.com/signin');
+    await page.goto('https://merchant-sit.traxionpay.com/signin');
 
     await page.getByPlaceholder('your@email.com').fill(correctUser.email);
     await page.getByPlaceholder('your password').fill(correctUser.password);
