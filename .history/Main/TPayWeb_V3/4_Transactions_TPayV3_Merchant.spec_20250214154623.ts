@@ -25,7 +25,7 @@ function getRandomCorrectUser() {
   });
   
   test.describe('Transactions', () => {
-    test('Transactions - Tab Navigation', async ({ page }) => {
+    test('Transactions - Visibility', async ({ page }) => {
         const testDataUsers = getRandomCorrectUser();
         await page.goto('https://merchant-sit.traxionpay.com/signin');
         await page.getByPlaceholder('your@email.com').fill(testDataUsers.email);
@@ -34,21 +34,6 @@ function getRandomCorrectUser() {
 
         await page.getByRole('link', { name: 'Transactions' }).click();
         
+
     });
-
-    test('Transactions - Table Visibility', async ({ page }) => {
-        const testDataUsers = getRandomCorrectUser();
-        await page.goto('https://merchant-sit.traxionpay.com/signin');
-        await page.getByPlaceholder('your@email.com').fill(testDataUsers.email);
-        await page.getByPlaceholder('your password').fill(testDataUsers.password);
-        await page.getByRole('button', { name: 'Sign in' }).click();
-
-        await page.getByRole('link', { name: 'Transactions' }).click();
-        
-        await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
-        // Check if the transaction table is present
-        const transactionTable = await page.$('div.table-responsive > div#transactions-list_wrapper.dt-container.dt-bootstrap5.dt-empty-footer');
-        expect(transactionTable).not.toBeNull();
-    });
-
   });

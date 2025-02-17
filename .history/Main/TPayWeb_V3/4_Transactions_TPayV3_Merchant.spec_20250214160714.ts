@@ -44,7 +44,6 @@ function getRandomCorrectUser() {
         await page.getByRole('button', { name: 'Sign in' }).click();
 
         await page.getByRole('link', { name: 'Transactions' }).click();
-        
         await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
         // Check if the transaction table is present
         const transactionTable = await page.$('div.table-responsive > div#transactions-list_wrapper.dt-container.dt-bootstrap5.dt-empty-footer');
