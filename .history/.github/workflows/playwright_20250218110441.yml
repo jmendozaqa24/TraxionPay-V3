@@ -20,19 +20,10 @@ jobs:
         run: npm ci
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
-
-        # Run Playwright tests Web
       - name: Run TPayMobile_V3 Playwright Tests
         if: always()
         run: |
-          npx playwright test Main/TPayWeb_V3 --project=Chromium 
-
-        # Run Playwright tests Mobile
-      - name: Run TPayMobile_V3 Playwright Tests
-        if: always()
-        run: |
-          npx playwright test Main/TPayMobile_V3 --project=Mobile
-
+          npx playwright test Main/TPayMobile_V3 --project=mobile
       - name: Generate Allure Report
         if: always()
         run: |

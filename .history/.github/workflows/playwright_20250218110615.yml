@@ -25,13 +25,13 @@ jobs:
       - name: Run TPayMobile_V3 Playwright Tests
         if: always()
         run: |
-          npx playwright test Main/TPayWeb_V3 --project=Chromium 
+          npx playwright test Main/TPayWeb_V3 --project=mobile
 
         # Run Playwright tests Mobile
       - name: Run TPayMobile_V3 Playwright Tests
         if: always()
         run: |
-          npx playwright test Main/TPayMobile_V3 --project=Mobile
+          npx playwright test Main/TPayMobile_V3 --project=mobile
 
       - name: Generate Allure Report
         if: always()

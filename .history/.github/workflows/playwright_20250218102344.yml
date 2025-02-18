@@ -9,53 +9,43 @@ on:
       - main
 
 jobs:
-  test-and-report:
+  run-tests:
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
+
       - name: Install dependencies
         run: npm ci
+
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
-        # Run Playwright tests Web
-      - name: Run TPayMobile_V3 Playwright Tests
-        if: always()
-        run: |
-          npx playwright test Main/TPayWeb_V3 --project=Chromium 
+      #- name: Run TPayWeb_V3 Playwright Tests
+      #  if: always()
+      #  run: | 
+      #    npx playwright test Main/TPayWeb_V3 --project=chromium
 
-        # Run Playwright tests Mobile
       - name: Run TPayMobile_V3 Playwright Tests
         if: always()
         run: |
-          npx playwright test Main/TPayMobile_V3 --project=Mobile
+          npx playwright test Main/TPayMobile_V3 --project=mobile
+
+      #- name: Run TPayWeb_API_V3 Playwright Tests
+      #  if: always()
+      #  run: |
+      #   npx playwright test Main/TPayWeb_API_V3 --project=chromium
 
       - name: Generate Allure Report
         if: always()
         run: |
           npx allure generate allure-results --clean -o allure-report
-      - name: Upload report artifact
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: allure-report
-          path: allure-report/
-          retention-days: 1
 
-  deploy-pages:
-    needs: test-and-report
-    runs-on: self-hosted
-    steps:
-      - uses: actions/checkout@v4
-      - name: Download report artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: allure-report
-          path: allure-report
-      - name: Deploy to GitHub Pages
+      - name: Deploy Allure Report to GitHub Pages
+        if: always()
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GH_PAT }}
@@ -63,15 +53,14 @@ jobs:
           keep_files: false
           publish_branch: gh-pages
 
-  send-email:
-    needs: deploy-pages
-    runs-on: self-hosted
-    steps:
-      - name: Wait for Pages deployment
-        run: |
-          echo "Waiting for GitHub Pages to update (4 minutes)..."
-          sleep 240
-      - name: Send notification email
+      #- name: Wait for GitHub Pages to update
+      #  if: always()
+      #  run: |
+      #    echo "Waiting for GitHub Pages to update (5 minutes)..."
+      #    sleep 240    
+
+      - name: Send email with test results
+        if: always()
         uses: dawidd6/action-send-mail@v4
         with:
           server_address: smtp.gmail.com
