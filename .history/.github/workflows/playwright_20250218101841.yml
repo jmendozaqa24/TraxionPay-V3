@@ -24,10 +24,10 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
-      #- name: Run TPayWeb_V3 Playwright Tests
-      #  if: always()
-      #  run: | 
-      #    npx playwright test Main/TPayWeb_V3 --project=chromium
+      - name: Run TPayWeb_V3 Playwright Tests
+        if: always()
+        run: | 
+          npx playwright test Main/TPayWeb_V3 --project=chromium
 
       - name: Run TPayMobile_V3 Playwright Tests
         if: always()
