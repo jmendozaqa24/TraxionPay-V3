@@ -1,0 +1,3 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","3","Transactions - Progress","Chrome","Tue Feb 18 08:56:55 PST 2025","passed","Tue Feb 18 08:56:55 PST 2025","Transactions - Tab Navigation","TPayWeb_V3\4_Transactions_TPayV3_Merchant.spec.ts","",""
+"","597","Transactions - Table Visibility","Chrome","Tue Feb 18 08:56:49 PST 2025","failed","Tue Feb 18 08:56:49 PST 2025","Transactions - Tab Navigation","TPayWeb_V3\4_Transactions_TPayV3_Merchant.spec.ts","",""
