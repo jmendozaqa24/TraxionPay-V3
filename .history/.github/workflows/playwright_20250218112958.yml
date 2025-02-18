@@ -46,7 +46,6 @@ jobs:
           retention-days: 1
 
   deploy-pages:
-    if: always()
     needs: test-and-report
     runs-on: self-hosted
     steps:
@@ -65,7 +64,6 @@ jobs:
           publish_branch: gh-pages
 
   send-email:
-    if: always()
     needs: deploy-pages
     runs-on: self-hosted
     steps:
