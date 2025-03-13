@@ -36,13 +36,12 @@ test.describe('Transactions - Tab Navigation', () => {
 
     test('Transactions - Table Visibility', async () => {        
         await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
-        await page.waitForTimeout(1000);
         const transactionTable = await page.$('div.table-responsive > div#transactions-list_wrapper.dt-container.dt-bootstrap5.dt-empty-footer');
         expect(transactionTable).not.toBeNull();
     });
 
     test.describe('Transactions - Progress', async () => {
-        test.skip('Transactions - Date Range Selection', async () => {
+        test('Transactions - Date Range Selection', async () => {
             // Open date picker
             await page.getByPlaceholder('Select date range').click();
 
@@ -136,6 +135,10 @@ test.describe('Transactions - Tab Navigation', () => {
                 if (option !== 'All') {
                     const transactionTypes = await page.$$eval('tbody tr td:nth-child(3)', 
                         cells => cells.map(cell => cell.textContent?.trim()));
+                    
+                    for (const type of transactionTypes) {
+                        expect(type).toContain(option.slice(0, -1)); // Remove 's' from 'Cash-Ins'/'Cash-Outs'
+                    }
                 }
         
                 // Scroll down to view more results
@@ -153,77 +156,56 @@ test.describe('Transactions - Tab Navigation', () => {
             const entriesDropdown = await page.getByLabel('entries per page');
             const entriesOptions = ['10', '25', '50', '100'];
             
-            // First check if table has any data
-            const noDataMessage = await page.locator('div#transactions-list_wrapper').textContent();
-            if (noDataMessage.includes('No data available in table')) {
-                console.log('Transaction table is empty - skipping entries per page test');
-                // Verify empty state is properly displayed
-                expect(await page.locator('div#transactions-list_wrapper tbody tr').count()).toBe(1);
-            } else {
-                // Proceed with original test if table has data
-                for (const option of entriesOptions) {
-                    console.log(`Testing entries per page: ${option}`);
+            for (const option of entriesOptions) {
+                console.log(`Testing entries per page: ${option}`);
+                
+                // Select number of entries
+                await entriesDropdown.click();
+                await entriesDropdown.selectOption(option);
+                const selectedEntriesValue = await entriesDropdown.inputValue();
+                expect(selectedEntriesValue).toBe(option);
+        
+                // Wait for table to update
+                await page.waitForTimeout(2000);
+        
+                // Get total number of rows
+                const tableRows = await page.$$('div#transactions-list_wrapper tbody tr');
+                const rowCount = tableRows.length;
+                
+                // Verify row count is less than or equal to selected option
+                expect(rowCount).toBeLessThanOrEqual(parseInt(option));
+                console.log(`Found ${rowCount} rows for ${option} entries option`);
+        
+                // Scroll to bottom to ensure all data is loaded
+                await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
+                await page.waitForTimeout(1000);
+        
+                // Get and verify the showing text
+                const showingInfo = await page.locator('div#transactions-list_info').textContent();
+                const matches = showingInfo.match(/Showing \d+ to (\d+) of (\d+) entries/);
+                
+                if (matches) {
+                    const shownEntries = parseInt(matches[1]);
+                    const totalEntries = parseInt(matches[2]);
                     
-                    // Select number of entries
-                    await entriesDropdown.click();
-                    await entriesDropdown.selectOption(option);
-                    const selectedEntriesValue = await entriesDropdown.inputValue();
-                    expect(selectedEntriesValue).toBe(option);
-            
-                    // Wait for table to update
-                    await page.waitForTimeout(2000);
-            
-                    // Get total number of rows
-                    const tableRows = await page.$$('div#transactions-list_wrapper tbody tr');
-                    const rowCount = tableRows.length;
+                    // Verify shown entries doesn't exceed selected option
+                    expect(shownEntries).toBeLessThanOrEqual(parseInt(option));
+                    // Verify shown entries matches actual row count
+                    expect(shownEntries).toBe(rowCount);
                     
-                    // Verify row count is less than or equal to selected option
-                    expect(rowCount).toBeLessThanOrEqual(parseInt(option));
-                    console.log(`Found ${rowCount} rows for ${option} entries option`);
-            
-                    // Scroll to bottom to ensure all data is loaded
-                    await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
-                    await page.waitForTimeout(1000);
-            
-                    // Get and verify the showing text
-                    const showingInfo = await page.locator('div#transactions-list_info').textContent();
-                    const matches = showingInfo.match(/Showing \d+ to (\d+) of (\d+) entries/);
-                    
-                    if (matches) {
-                        const shownEntries = parseInt(matches[1]);
-                        const totalEntries = parseInt(matches[2]);
-                        
-                        // Verify shown entries doesn't exceed selected option
-                        expect(shownEntries).toBeLessThanOrEqual(parseInt(option));
-                        // Verify shown entries matches actual row count
-                        expect(shownEntries).toBe(rowCount);
-                        
-                        console.log(`Showing ${shownEntries} of ${totalEntries} total entries`);
-                    }
-            
-                    // Scroll back to top
-                    const transactionTable = await page.$('div.table-responsive');
-                    await transactionTable?.scrollIntoViewIfNeeded();
-                    await page.waitForTimeout(1000);
+                    console.log(`Showing ${shownEntries} of ${totalEntries} total entries`);
                 }
+        
+                // Scroll back to top
+                const transactionTable = await page.$('div.table-responsive');
+                await transactionTable?.scrollIntoViewIfNeeded();
+                await page.waitForTimeout(1000);
             }
         });
 
         test('Transaction - Table Pagination Functionality', async () => {
-            const entriesDropdown = await page.getByLabel('entries per page');
-            const entriesOptions = ['10', '25', '50', '100'];
-
-            // First check total number of entries
-            const infoText = await page.locator('div#transactions-list_info').textContent();
-            const entriesMatch = infoText?.match(/of (\d+) entries/);
-
-            if (!entriesMatch || parseInt(entriesMatch[1]) <= 10) {
-                console.log('Insufficient entries for pagination testing - need more than 10 entries');
-                // Verify we have some entries but not enough for pagination
-                const rowCount = await page.locator('div#transactions-list_wrapper tbody tr').count();
-                expect(rowCount).toBeLessThanOrEqual(10);
-                return; // Exit test early
-            }
+              const entriesDropdown = await page.getByLabel('entries per page');
+              const entriesOptions = ['10', '25', '50', '100'];
             
               // Part 1: Interact with the entries per page dropdown
               for (const option of entriesOptions) {
@@ -256,7 +238,7 @@ test.describe('Transactions - Tab Navigation', () => {
               await entriesDropdown.click();
               await entriesDropdown.selectOption('10');
               await new Promise(resolve => setTimeout(resolve, 1000)); // Wait for the table to update
-        
+            
               // Get the total number of entries
               const totalEntriesText = await page.textContent('div#transactions-list_info');
               const totalEntriesMatch = totalEntriesText.match(/of (\d+) entries/);

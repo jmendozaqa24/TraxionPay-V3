@@ -150,7 +150,7 @@ test.describe('Sign Up', () => {
 });
 
 test.describe('Forgot Password', () => {
-  test.skip('Forgot Password - Valid', async ({ page }) => {
+  test('Forgot Password - Valid', async ({ page }) => {
     const correctUser = getRandomCorrectUser();
     
     await page.goto('https://merchant-sit.traxionpay.com/signin');

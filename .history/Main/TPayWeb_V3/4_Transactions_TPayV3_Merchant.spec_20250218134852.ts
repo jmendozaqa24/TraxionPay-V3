@@ -1,0 +1,46 @@
+import { test, expect } from '@playwright/test';
+import userDetails from './userDetails.json'; 
+
+function getRandomCorrectUser() {
+    const testDataUsers = userDetails.testDataUsers;
+    const randomIndex = Math.floor(Math.random() * testDataUsers.length);
+    return testDataUsers[randomIndex];
+}
+
+test.describe('Transactions - Tab Navigation', () => {
+    let page;
+
+    test.beforeAll(async ({ browser }) => {
+        page = await browser.newPage();
+        const testDataUsers = getRandomCorrectUser();
+
+        await page.goto('https://merchant-sit.traxionpay.com/signin');
+        await page.getByPlaceholder('your@email.com').fill(testDataUsers.email);
+        await page.getByPlaceholder('your password').fill(testDataUsers.password);
+        await page.getByRole('button', { name: 'Sign in' }).click();
+        await page.getByRole('link', { name: 'Transactions' }).click();
+
+    });
+
+    test.afterEach(async ({ }, testInfo) => {
+        if (testInfo.status !== testInfo.expectedStatus) {
+            const screenshotPath = `screenshots/${testInfo.title}.png`;
+            await page.screenshot({ path: screenshotPath, fullPage: true });
+            testInfo.attachments.push({
+                name: 'Screenshot',
+                path: screenshotPath,
+                contentType: 'image/png'
+            });
+        }
+    });
+
+    test('Transactions - Table Visibility', async () => {        
+        await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
+        const transactionTable = await page.$('div.table-responsive > div#transactions-list_wrapper.dt-container.dt-bootstrap5.dt-empty-footer');
+        expect(transactionTable).not.toBeNull();
+    });
+
+    test('Transactions - Progress', async () => {
+        await page.locator('#transactions-list_wrapper div').nth(1).click(); 
+    }); 
+});

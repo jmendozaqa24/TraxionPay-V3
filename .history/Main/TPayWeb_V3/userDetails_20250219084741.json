@@ -1,0 +1,45 @@
+{
+  "correctUsers": [
+    {
+      "email": "vasalanga+3@traxiontech.net",
+      "password": "Traxion123!"
+    },
+    {
+      "email": "vasalanga+2@traxiontech.net",
+      "password": "Traxion123!"
+    }
+  ],
+
+  "transactData": [
+    {
+      "email": "vasalanga+1@traxiontech.net",
+      "password": "Traxion123!"
+    }
+  ],
+
+
+"testDataUsers": [
+    {
+      "email": "mmontes@traxiontech.net",
+      "password": "Traxion@01!"
+    }
+  ],
+
+"testUserProfile": [
+    {
+      "email": "vasalanga+2@traxiontech.net",
+      "password": "Traxion123!"
+    }
+  ],
+
+
+  "incorrectUsers": [
+    {
+      "email": "incorrect1@example.com"
+    },
+    
+    {
+      "email": "incorrect2@example.com"
+    }
+  ]
+}

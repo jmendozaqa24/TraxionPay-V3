@@ -150,7 +150,7 @@ test.describe('Sign Up', () => {
 });
 
 test.describe('Forgot Password', () => {
-  test.skip('Forgot Password - Valid', async ({ page }) => {
+  test('Forgot Password - Valid', async ({ page }) => {
     const correctUser = getRandomCorrectUser();
     
     await page.goto('https://merchant-sit.traxionpay.com/signin');
@@ -164,7 +164,7 @@ test.describe('Forgot Password', () => {
     //verification test the email reset is succesful
     await page.getByRole('textbox', { name: 'Email Address' }).fill(correctUser.email); 
     const [response] = await Promise.all([
-        page.waitForResponse(response => response.url().includes('https://merchant-sit.traxionpay.com/signin/forgot-password') && response.status() === 200),
+        page.waitForResponse(response => response.url().includes('https://merchant-sit.traxionpay.com/forgot-password') && response.status() === 200),
         page.getByRole('button', { name: 'Send Link' }).click()
     ]);
 

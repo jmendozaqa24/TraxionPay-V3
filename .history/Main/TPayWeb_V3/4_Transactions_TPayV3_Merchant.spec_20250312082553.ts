@@ -210,20 +210,17 @@ test.describe('Transactions - Tab Navigation', () => {
         });
 
         test('Transaction - Table Pagination Functionality', async () => {
-            const entriesDropdown = await page.getByLabel('entries per page');
-            const entriesOptions = ['10', '25', '50', '100'];
+              const entriesDropdown = await page.getByLabel('entries per page');
+              const entriesOptions = ['10', '25', '50', '100'];
 
-            // First check total number of entries
-            const infoText = await page.locator('div#transactions-list_info').textContent();
-            const entriesMatch = infoText?.match(/of (\d+) entries/);
+              const noDataMessage = await page.locator('div#transactions-list_wrapper').textContent();
+                if (noDataMessage.includes('No data available')) {
+                    console.log('Transaction table is empty - skipping test');
+                    // Verify empty state is properly displayed
+                    expect(await page.locator('div#transactions-list_wrapper tbody tr').count()).toBe(0);
+                    return; // Exit the test early
+                }
 
-            if (!entriesMatch || parseInt(entriesMatch[1]) <= 10) {
-                console.log('Insufficient entries for pagination testing - need more than 10 entries');
-                // Verify we have some entries but not enough for pagination
-                const rowCount = await page.locator('div#transactions-list_wrapper tbody tr').count();
-                expect(rowCount).toBeLessThanOrEqual(10);
-                return; // Exit test early
-            }
             
               // Part 1: Interact with the entries per page dropdown
               for (const option of entriesOptions) {
@@ -256,7 +253,7 @@ test.describe('Transactions - Tab Navigation', () => {
               await entriesDropdown.click();
               await entriesDropdown.selectOption('10');
               await new Promise(resolve => setTimeout(resolve, 1000)); // Wait for the table to update
-        
+            
               // Get the total number of entries
               const totalEntriesText = await page.textContent('div#transactions-list_info');
               const totalEntriesMatch = totalEntriesText.match(/of (\d+) entries/);

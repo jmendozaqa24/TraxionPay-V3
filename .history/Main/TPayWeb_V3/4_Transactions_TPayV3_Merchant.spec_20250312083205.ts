@@ -256,7 +256,7 @@ test.describe('Transactions - Tab Navigation', () => {
               await entriesDropdown.click();
               await entriesDropdown.selectOption('10');
               await new Promise(resolve => setTimeout(resolve, 1000)); // Wait for the table to update
-        
+            
               // Get the total number of entries
               const totalEntriesText = await page.textContent('div#transactions-list_info');
               const totalEntriesMatch = totalEntriesText.match(/of (\d+) entries/);
