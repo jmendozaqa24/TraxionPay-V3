@@ -22,13 +22,13 @@ jobs:
         run: npx playwright install --with-deps
 
         # Run Playwright tests Web
-      - name: Run TraxionPay Merchant Playwright Tests
+      - name: Run TPayMobile_V3 Playwright Tests
         if: always()
         run: |
           npx playwright test Main/TPayWeb_V3 --project=Chromium 
 
         # Run Playwright tests Mobile
-      - name: Run TraxionPay Mobile Playwright Tests
+      - name: Run TPayMobile_V3 Playwright Tests
         if: always()
         run: |
           npx playwright test Main/TPayMobile_V3 --project=Mobile
