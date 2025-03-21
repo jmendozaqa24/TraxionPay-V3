@@ -39,7 +39,7 @@ export default defineConfig({
     {
       name: 'Chromium',
       use: { 
-        viewport: { width: 1550, height: 1000 },
+        viewport: { width: 1600, height: 1000 },
         launchOptions:{
           slowMo:100,
         },

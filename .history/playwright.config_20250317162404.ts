@@ -35,11 +35,20 @@ export default defineConfig({
   globalSetup: require.resolve('./global-setup.ts'),
    /* Configure projects for major browsers */
    projects: [
+    {
+      name: 'Chrome',
+      use: { 
+        viewport: { width: 1920, height: 1080 },
+        launchOptions:{
+          slowMo:100,
+        },
+      },
+    },
 
     {
       name: 'Chromium',
       use: { 
-        viewport: { width: 1550, height: 1000 },
+        viewport: { width: 1920, height: 1080 },
         launchOptions:{
           slowMo:100,
         },
