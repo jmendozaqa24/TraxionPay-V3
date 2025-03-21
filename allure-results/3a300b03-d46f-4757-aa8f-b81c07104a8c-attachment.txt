@@ -1,4 +1,0 @@
-Number of rows for option 10: 10
-Number of rows for option 25: 25
-Number of rows for option 50: 50
-Number of rows for option 100: 100

@@ -1,3 +1,0 @@
-Testing filter: All
-Testing filter: Cash-Ins
-Testing filter: Cash-Outs
