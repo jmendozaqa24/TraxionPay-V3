@@ -1,0 +1,35 @@
+Navigating to Bank Accounts tab...
+Bank Account 1
+Bank Name: ASIA UNITED BANK
+Account Name: Vincent Salanga
+Account Number: 916100010416
+Account Type: Savings
+Bank Account 2
+Bank Name: UNIONBANK
+Account Name: Vincent Salanga
+Account Number: 1095 9448 0004
+Account Type: Checking
+Bank Account 3
+Bank Name: STARPAY CORPORATION
+Account Name: Vincent Salanga
+Account Number: 9560823094
+Account Type: Checking
+Bank Account 4
+Bank Name: UNION BANK OF THE PHILIPPINES
+Account Name: QA Vincent
+Account Number: 1095 9448 0006
+Account Type: Savings
+Bank Account 5
+Bank Name: UNION BANK OF THE PHILIPPINES
+Account Name: QA Vincent Salanga
+Account Number: 1095 9448 0005
+Account Type: Savings
+Bank Account 6
+Bank Name: GOTYME BANK CORPORATION
+Account Name: GOTYME BC
+Account Number: 8882317987772
+Account Type: Savings
+Open Bank Account Slot 7.
+Open Bank Account Slot 8.
+Open Bank Account Slot 9.
+Open Bank Account Slot 10.
