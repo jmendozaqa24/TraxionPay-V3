@@ -47,13 +47,21 @@ test.describe('Transactions - Tab Navigation', () => {
             await page.getByPlaceholder('Select date range').click();
 
             await page.getByRole('button').first().click();
+            
+            // Select start date (15th)
             await page.getByText('15', { exact: true }).first().click();
+            
+            // Select end date (19th)
             await page.getByText('19', { exact: true }).first().click();
+            
+            // Wait for table to update with new date range
             await page.waitForTimeout(2000); // Give time for data to load
             
+            // Verify date range is applied
             const dateRangeInput = await page.getByPlaceholder('Select date range');
             const dateRangeValue = await dateRangeInput.inputValue();
             
+            // Assert that selected dates are within range
             expect(dateRangeValue).toContain('15');
             expect(dateRangeValue).toContain('19');
             
