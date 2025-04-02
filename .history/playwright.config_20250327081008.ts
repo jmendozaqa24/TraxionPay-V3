@@ -60,7 +60,7 @@ export default defineConfig({
     {
       name: 'Mobile',
       use: {
-        viewport: { width: 500, height: 780 },
+        viewport: { width: 480, height: 780 },
         userAgent: 'Mozilla/5.0 (Linux; Android 15.0; SM-G955F Build/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/60.0.3112.107 Mobile Safari/537.36',
         deviceScaleFactor: 3,
         isMobile: true,

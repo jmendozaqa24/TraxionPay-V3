@@ -80,11 +80,11 @@ jobs:
         with:
           server_address: smtp.gmail.com
           server_port: 587
-          username: jmendoza@traxiontech.net
+          username: vasalanga@traxiontech.net
           subject: Playwright Test Result
-          password: tbogiuqbbfipaeve
-          to: 	qa@traxiontech.net
-          from: QA Team <jmendoza@traxiontech.net> 
+          password: yszeszihrsqreloy
+          to: 	QA@traxiontech.net
+          from: QA Team <vasalanga@traxiontech.net> 
           html_body: |
             <!DOCTYPE html>
               <html lang="en">
