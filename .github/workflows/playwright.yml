@@ -28,6 +28,14 @@ jobs:
         run: |
           npx playwright test Main/Functional_Test/TPayWeb_V3 --project=Chromium 
 
+
+        # Run Playwright tests Mobile
+      - name: Run TraxionPay Mobile Playwright Tests
+        if: always()
+        run: |
+          npx playwright test Main/Functional_Test/TPayMobile_V3 --project=Chromium 
+
+
         # Run Playwright tests Mobile
       #- name: Run TraxionPay Mobile Playwright Tests
       #  if: always()
