@@ -1,0 +1,171 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: Dashboard - User Details >> User Details Visibility and Retrieval
+- Location: C:\actions-runner\Automation\TraxionPay-V3\TraxionPay-V3\Main\Functional_Test\TPayWeb_V3\3_Dashboard.spec.ts:50:7
+
+# Error details
+
+```
+Error: Timed out 5000ms waiting for expect(locator).toBeVisible()
+
+Locator: getByText('Overview')
+Expected: visible
+Received: <element(s) not found>
+Call log:
+  - expect.toBeVisible with timeout 5000ms
+  - waiting for getByText('Overview')
+
+    at C:\actions-runner\Automation\TraxionPay-V3\TraxionPay-V3\Main\Functional_Test\TPayWeb_V3\3_Dashboard.spec.ts:40:44
+```
+
+# Test source
+
+```ts
+   1 | import { test, expect } from '@playwright/test';
+   2 | import userDetails from './userDetails.json'; 
+   3 |
+   4 | function getRandomCorrectUser() {
+   5 |   const testDataUsers = userDetails.testDataUsers;
+   6 |   const randomIndex = Math.floor(Math.random() * testDataUsers.length);
+   7 |   return testDataUsers[randomIndex];
+   8 | }
+   9 |
+   10 |
+   11 | let context;
+   12 | let page;
+   13 |
+   14 | test.afterEach(async ({ page }) => {
+   15 |   if (test.info().status !== test.info().expectedStatus) {
+   16 |     // Add a hook to take a screenshot on failure
+   17 |     const screenshotPath = `screenshots/${test.info().title}.png`;
+   18 |     await page.screenshot({ path: screenshotPath, fullPage: true });
+   19 |     test.info().attachments.push({
+   20 |       name: 'Screenshot',
+   21 |       path: screenshotPath,
+   22 |       contentType: 'image/png'
+   23 |     });
+   24 |   }
+   25 | });
+   26 |
+   27 | test.beforeAll(async ({ browser }) => {
+   28 |   context = await browser.newContext();
+   29 |   page = await context.newPage();
+   30 |   const testDataUsers = getRandomCorrectUser();
+   31 |
+   32 |   await page.goto('https://merchant-sit.traxionpay.com/signin');
+   33 |
+   34 |   await page.getByPlaceholder('your@email.com').fill(testDataUsers.email);
+   35 |   await page.getByPlaceholder('your password').fill(testDataUsers.password);
+   36 |   await page.getByRole('button', { name: 'Sign in' }).click();
+   37 |
+   38 |   // Verification
+   39 |   await expect(page).toHaveURL('https://merchant-sit.traxionpay.com');
+>  40 |   await expect(page.getByText('Overview')).toBeVisible();
+      |                                            ^ Error: Timed out 5000ms waiting for expect(locator).toBeVisible()
+   41 |   await expect(page.getByRole('heading', { name: 'Dashboard' })).toBeVisible();
+   42 | });
+   43 |
+   44 | test.beforeEach(async () => {
+   45 |   // Reset the state of the page before each test
+   46 |   await page.goto('https://merchant-sit.traxionpay.com');
+   47 | });
+   48 |
+   49 | test.describe('Dashboard - User Details', () => {
+   50 |   test('User Details Visibility and Retrieval', async () => {
+   51 |     // Check visibility of the account link and retrieve its value
+   52 |     const accountLink = await page.getByRole('link', { name: /Account:/ });
+   53 |     await expect(accountLink).toBeVisible();
+   54 |     const accountLinkText = await accountLink.textContent();
+   55 |     const accountNumber = accountLinkText.replace('Account: ', '').trim();
+   56 |     console.log(`Account Number: ${accountNumber}`);
+   57 |  
+   58 |
+   59 |     // Check visibility of the current currency link and retrieve its value
+   60 |     const currentCurrencyLink = await page.getByRole('link', { name: /Current:/ });
+   61 |     await expect(currentCurrencyLink).toBeVisible();
+   62 |     const currentCurrencyText = await currentCurrencyLink.textContent();
+   63 |     const currentCurrency = currentCurrencyText.replace('Current: ', '').trim();
+   64 |     console.log(`Current Currency: Visible\nCurrent: ${currentCurrency}`);
+   65 |     
+   66 |
+   67 |     // Check visibility of the available currency link and retrieve its value
+   68 |     const availableCurrencyLink = await page.getByRole('link', { name: /Available:/ });
+   69 |     await expect(availableCurrencyLink).toBeVisible();
+   70 |     const availableCurrencyText = await availableCurrencyLink.textContent();
+   71 |     const availableCurrency = availableCurrencyText.replace('Available: ', '').trim();
+   72 |     console.log(`Available Currency: Visible\nAvailable: ${availableCurrency}`);
+   73 |
+   74 |
+   75 |     // Check visibility of the heading and retrieve its value
+   76 |     const heading = await page.getByRole('heading', { name: /[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}/ });
+   77 |     await expect(heading).toBeVisible();
+   78 |     const headingText = await heading.textContent();
+   79 |     console.log(`Heading: Visible\nHeading: ${headingText.trim()}`);
+   80 |    
+   81 |
+   82 |     // Check visibility of the email link and retrieve its value
+   83 |     const emailLink = await page.getByRole('link', { name: /@traxiontech.net/ });
+   84 |     await expect(emailLink).toBeVisible();
+   85 |     const emailText = await emailLink.textContent();
+   86 |     console.log(`Email: Visible\nEmail: ${emailText.trim()}`);
+   87 |    
+   88 |
+   89 |     // Check visibility of the QR code image and retrieve its alt text
+   90 |     const qrCodeImage = await page.getByRole('img', { name: /QR Code/ });
+   91 |     await expect(qrCodeImage).toBeVisible();
+   92 |     const qrCodeAltText = await qrCodeImage.getAttribute('alt');
+   93 |     console.log(`QR Code Image: Visible\nQR Code: ${qrCodeAltText}`);   
+   94 |
+   95 |     // Check visibility of the phone number and retrieve its value
+   96 |     const phoneNumber = await page.getByText(/\+63[0-9]{10}/);
+   97 |     await expect(phoneNumber).toBeVisible();
+   98 |     const phoneNumberText = await phoneNumber.textContent();
+   99 |     console.log(`Phone Number: Visible\nPhone: ${phoneNumberText.trim()}`);
+  100 |   });
+  101 | });
+  102 |
+  103 | test.describe('Dashboard - Analytics', () => {
+  104 |   test('Analytics - Overview Visibility and Retrieval', async () => {
+  105 |     // Wait for the total PayIns value element to be visible and ensure it has content
+  106 |     console.log('Checking visibility of the total PayIns value...');
+  107 |     const totalPayIns = await page.locator('#payins-total');
+  108 |     await expect(totalPayIns).toBeVisible();
+  109 |
+  110 |     // Retry mechanism to wait for the value to be updated
+  111 |     let totalPayInsText = '';
+  112 |     for (let i = 0; i < 10; i++) { // Retry up to 10 times
+  113 |       totalPayInsText = await totalPayIns.textContent();
+  114 |       if (totalPayInsText.trim() !== '0.00') {
+  115 |         break;
+  116 |       }
+  117 |       await page.waitForTimeout(1000); // Wait for 1 second before retrying
+  118 |     }
+  119 |
+  120 |     console.log(`Total PayIns: Visible\nTotal PayIns: ${totalPayInsText.trim()}`);
+  121 |
+  122 |     console.log('Checking visibility of the total PayOuts value...');
+  123 |     const totalPayOuts = await page.locator('#payouts-total');
+  124 |     await expect(totalPayOuts).toBeVisible();
+  125 |
+  126 |     // Retry mechanism to wait for the value to be updated
+  127 |     let totalPayOutsText = '';
+  128 |     for (let i = 0; i < 10; i++) { // Retry up to 10 times
+  129 |       totalPayOutsText = await totalPayOuts.textContent();
+  130 |       if (totalPayOutsText.trim() !== '0.00') {
+  131 |         break;
+  132 |       }
+  133 |       await page.waitForTimeout(1000); // Wait for 1 second before retrying
+  134 |     }
+  135 |
+  136 |     console.log(`Total PayOuts: Visible\nTotal PayOuts: ${totalPayOutsText.trim()}`);
+  137 |   });
+  138 |   //still fixing
+  139 |   test.skip('Analytics - Transaction Chart Visibility and Retrieval', async () => {
+  140 |     // Scroll down to the Analytics Chart heading
+```
