@@ -25,6 +25,7 @@ test.describe.parallel('Mobile - Login Page', () => {
             //skip onboarding
             await page.getByRole('button', { name: 'Skip' }).click();
             //condition to pass
+            
             await expect(page).toHaveURL('https://traxionpay-app.web.app/#/login');
             await page.waitForTimeout(1000); 
             //login
