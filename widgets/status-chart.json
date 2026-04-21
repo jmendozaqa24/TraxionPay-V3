@@ -1,1 +1,1 @@
-[]
+[{"uid":"25ddde587c712042","name":"Login - Valid Credentials","time":{"start":1776747809744,"stop":1776747817870,"duration":8126},"status":"passed","severity":"normal"},{"uid":"ea21fc2681913a75","name":"Login - Onboarding Screen Visibility","time":{"start":1776747791943,"stop":1776747809294,"duration":17351},"status":"passed","severity":"normal"}]
