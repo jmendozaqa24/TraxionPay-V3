@@ -1,3 +1,3 @@
 "DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
-"","18298","Login - Onboarding Screen Visibility","Chromium","Thu Jul 23 13:16:07 SGT 2026","passed","Thu Jul 23 13:16:25 SGT 2026","Mobile - Login Page","Functional_Test\TPayMobile_V3\1_Login.spec.ts","",""
-"","11761","Login - Valid Credentials","Chromium","Thu Jul 23 13:16:26 SGT 2026","passed","Thu Jul 23 13:16:38 SGT 2026","Mobile - Login Page > Mobile - Login Page","Functional_Test\TPayMobile_V3\1_Login.spec.ts","",""
+"","5971","Login - Valid Credentials","Chromium","Fri Jul 24 13:07:07 SGT 2026","passed","Fri Jul 24 13:07:13 SGT 2026","Mobile - Login Page > Mobile - Login Page","Functional_Test\TPayMobile_V3\1_Login.spec.ts","",""
+"","16057","Login - Onboarding Screen Visibility","Chromium","Fri Jul 24 13:06:51 SGT 2026","passed","Fri Jul 24 13:07:07 SGT 2026","Mobile - Login Page","Functional_Test\TPayMobile_V3\1_Login.spec.ts","",""
