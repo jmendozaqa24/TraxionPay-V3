@@ -20,7 +20,7 @@ Received string: "https://traxionpay-app.web.app/#/login"
 Call log:
   - expect.toHaveURL with timeout 5000ms
   - waiting for locator(':root')
-    8 × locator resolved to <html>…</html>
+    7 × locator resolved to <html>…</html>
       - unexpected value "https://traxionpay-app.web.app/#/login"
 
     at C:\actions-runner\_work\TraxionPay-V3\TraxionPay-V3\Main\Functional_Test\TPayMobile_V3\1_Login.spec.ts:6:28
@@ -29,7 +29,12 @@ Call log:
 # Page snapshot
 
 ```yaml
-- button "Enable accessibility"
+- dialog:
+  - group:
+    - img "CASH IN Cash-in with ease. You can easily load your account without any hassle through a fund or bank transfer and more."
+  - button "Skip"
+  - button
+  - button "Next"
 ```
 
 # Test source
